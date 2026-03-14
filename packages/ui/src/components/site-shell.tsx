@@ -4,10 +4,12 @@ import { Container } from './container';
 export function SiteShell({
   brand,
   navItems,
+  cta,
   children
 }: {
   brand: string;
   navItems: Array<{ label: string; href: string }>;
+  cta?: { label: string; href: string };
   children: React.ReactNode;
 }) {
   return (
@@ -23,13 +25,20 @@ export function SiteShell({
                 </a>
               ))}
             </nav>
+            {cta ? (
+              <a href={cta.href} className="mg-header-cta">
+                {cta.label}
+              </a>
+            ) : null}
           </div>
         </Container>
       </header>
       <main>{children}</main>
       <footer className="mg-footer">
         <Container>
-          <p className="mg-muted">© {new Date().getFullYear()} {brand}. Foundation shell.</p>
+          <p className="mg-muted">
+            © {new Date().getFullYear()} {brand}. Foundation shell.
+          </p>
         </Container>
       </footer>
     </>

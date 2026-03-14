@@ -4,18 +4,24 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Mula Group Main Portal',
-  description: 'Base application shell for the Mula Group ecosystem.'
+  description: 'Integrated ecosystem for strategy, technology and execution.'
 };
 
 const navItems = [
-  { label: 'Overview', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' }
+  { label: 'About', href: '#about' },
+  { label: 'Ecosystem', href: '#ecosystem' },
+  { label: 'Capabilities', href: '#capabilities' },
+  { label: 'Partnerships', href: '#partnerships' },
+  { label: 'Contact', href: '#contact' }
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <AppShellLayout brand="Mula Group" navItems={navItems}>
+    <AppShellLayout
+      brand="Mula Group"
+      navItems={navItems}
+      cta={{ label: 'Partner with us', href: '#contact' }}
+    >
       {children}
     </AppShellLayout>
   );
