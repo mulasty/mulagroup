@@ -1,0 +1,22 @@
+:root {
+  --mg-bg: #0a0f1a;
+  --mg-surface: #111a2b;
+  --mg-text: #e9eef8;
+  --mg-text-muted: #9ba9c1;
+  --mg-primary: #4f7cff;
+  --mg-border: #1f2c45;
+
+  --mg-radius-sm: 0.5rem;
+  --mg-radius-md: 0.75rem;
+  --mg-radius-lg: 1rem;
+
+  --mg-space-2: 0.5rem;
+  --mg-space-3: 0.75rem;
+  --mg-space-4: 1rem;
+  --mg-space-6: 1.5rem;
+  --mg-space-8: 2rem;
+  --mg-space-12: 3rem;
+  --mg-space-16: 4rem;
+
+  --mg-container-max: 1320px;
+}
