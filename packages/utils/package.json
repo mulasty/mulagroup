@@ -1,0 +1,19 @@
+{
+  "name": "@mulagroup/utils",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@mulagroup/content-models": "workspace:*",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.5.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Dashboard Spec
 
 ## Cel dokumentu

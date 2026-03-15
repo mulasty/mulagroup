@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — AI Triage Prompt Library
 
 ## Cel dokumentu

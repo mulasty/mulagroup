@@ -1,4 +1,4 @@
-# Phase 2 — Main Portal
+﻿# Phase 2 — Main Portal
 
 ## Purpose of this file
 This document contains the **execution prompt for Codex** for the second implementation phase of the Mula Group ecosystem repository.

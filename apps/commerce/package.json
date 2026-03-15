@@ -1,0 +1,21 @@
+{
+  "name": "@mulagroup/commerce",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "eslint . --max-warnings=0",
+    "start": "next start",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@mulagroup/design-system": "workspace:*",
+    "@mulagroup/ui": "workspace:*",
+    "@mulagroup/utils": "workspace:*",
+    "next": "16.1.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  }
+}

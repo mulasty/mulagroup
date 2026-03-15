@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Case Study Framework
 
 ## Cel dokumentu

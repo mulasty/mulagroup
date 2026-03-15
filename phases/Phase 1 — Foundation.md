@@ -1,4 +1,4 @@
-# Phase 1 — Foundation
+﻿# Phase 1 — Foundation
 
 ## Purpose of this file
 This document contains the **execution prompt for Codex** for the first implementation phase of the Mula Group ecosystem repository.
@@ -97,7 +97,7 @@ Expected top-level structure should include at least:
 
 ### 2. Apps
 Create app shells for:
-- `mulagroup-main`
+- `portal`
 - `strategy`
 - `digital`
 - `commerce`
@@ -146,7 +146,7 @@ Create initial reusable components, such as:
 These should follow the premium corporate-tech direction from the design spec.
 
 ### 6. Base app shell
-Implement the base shell for `mulagroup-main`:
+Implement the base shell for `portal`:
 - root layout
 - placeholder homepage structure
 - placeholder sections or simple content blocks
@@ -228,7 +228,7 @@ Deliver a working foundation that includes:
 2. shared package structure
 3. design token implementation
 4. reusable UI primitive layer
-5. working `mulagroup-main` shell
+5. working `portal` shell
 6. working pillar app shells
 7. clear folder structure
 8. code that is clean and extendable

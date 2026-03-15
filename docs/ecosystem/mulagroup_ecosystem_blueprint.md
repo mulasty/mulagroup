@@ -1,4 +1,4 @@
-Mula Group — Ecosystem Blueprint
+﻿Mula Group — Ecosystem Blueprint
 Cel dokumentu
 Ten dokument definiuje blueprint całego ekosystemu Mula Group.
 

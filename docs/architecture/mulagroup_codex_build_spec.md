@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Codex Build Spec
 
 ## Cel dokumentu
@@ -118,7 +118,7 @@ Rekomendowana struktura:
 /mulagroup-platform
 │
 ├── apps
-│   ├── mulagroup-main
+│   ├── portal
 │   ├── strategy
 │   ├── digital
 │   ├── commerce
@@ -172,7 +172,7 @@ Rekomendowane:
 
 # 4. Application model
 
-## 4.1 apps/mulagroup-main
+## 4.1 apps/portal
 Rola:
 - portal główny grupy
 - strona corporate
@@ -230,7 +230,7 @@ Rola:
 # 5. Routing principles
 
 ## 5.1 Main portal routing
-Przykładowe ścieżki dla `mulagroup-main`:
+Przykładowe ścieżki dla `portal`:
 - `/`
 - `/about`
 - `/ecosystem`
@@ -361,7 +361,7 @@ Wdrożyć modele treści dla:
 
 ## 7.3 Suggested data folder structure
 ```text
-/apps/mulagroup-main/data
+/apps/portal/data
 /apps/strategy/data
 /apps/digital/data
 /apps/commerce/data

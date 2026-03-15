@@ -1,0 +1,16 @@
+{
+  "name": "@mulagroup/design-system",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "sideEffects": ["./styles/index.css"],
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./styles/index.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

@@ -1,10 +1,11 @@
-
-# START_HERE_MULAGROUP
+﻿# START_HERE_MULAGROUP
 
 ## Purpose of this file
+
 This document is the **main entry point** for working with the Mula Group project repository.
 
 It is intended for:
+
 - founders,
 - developers,
 - Codex / AI coding agents,
@@ -13,6 +14,7 @@ It is intended for:
 - future collaborators.
 
 Its role is to explain:
+
 - what the project is,
 - which documents are the source of truth,
 - how to work with the documentation,
@@ -38,6 +40,7 @@ It is a **business ecosystem platform** built around a main brand and multiple s
 - Lifestyle
 
 The final system is meant to include:
+
 - a main portal (`mulagroup.eu`)
 - multiple pillar websites / subdomains
 - a shared design system
@@ -62,11 +65,13 @@ The Mula Group ecosystem must be built in the following order:
 5. **AI, automation and dashboards fifth**
 
 This means:
+
 - do **not** try to build everything at once,
 - do **not** start from all pillar sites at the same time,
 - do **not** start from AI/CRM/dashboard logic before the web and content foundations are stable.
 
 The system should be built like a real business platform:
+
 - strategy first,
 - structure second,
 - execution third,
@@ -79,11 +84,13 @@ The system should be built like a real business platform:
 The documents below should be treated as the **primary source of truth**.
 
 ## 3.1 Strategic foundation
+
 - `mulagroup_master_vision.md`
 - `mulagroup_ecosystem_blueprint.md`
 - `mulagroup_brand_strategy.md`
 
 These define:
+
 - what Mula Group is,
 - what it is not,
 - how the ecosystem is structured,
@@ -92,10 +99,12 @@ These define:
 ---
 
 ## 3.2 Content and UX foundation
+
 - `mulagroup_content_system.md`
 - `mulagroup_design_system_spec.md`
 
 These define:
+
 - tone of voice,
 - core messages,
 - homepage content logic,
@@ -105,10 +114,12 @@ These define:
 ---
 
 ## 3.3 Technical foundation
+
 - `mulagroup_codex_build_spec.md`
 - `mulagroup_cms_schema_spec.md`
 
 These define:
+
 - stack,
 - monorepo structure,
 - component architecture,
@@ -120,6 +131,7 @@ These define:
 ---
 
 ## 3.4 Pillar blueprints
+
 - `strategy_site_blueprint.md`
 - `digital_site_blueprint.md`
 - `commerce_site_blueprint.md`
@@ -128,6 +140,7 @@ These define:
 - `lifestyle_site_blueprint.md`
 
 These define:
+
 - the role of each subdomain,
 - page structure,
 - CTA and lead logic,
@@ -136,6 +149,7 @@ These define:
 ---
 
 ## 3.5 Sales and operations foundation
+
 - `mulagroup_sales_framework.md`
 - `mulagroup_operating_system.md`
 - `mulagroup_lead_scoring_model.md`
@@ -147,6 +161,7 @@ These define:
 - `mulagroup_retainer_model.md`
 
 These define:
+
 - how leads should be handled,
 - how offers are built,
 - how discovery works,
@@ -156,12 +171,14 @@ These define:
 ---
 
 ## 3.6 Analytics, reporting and AI foundation
+
 - `mulagroup_analytics_event_map.md`
 - `mulagroup_dashboard_spec.md`
 - `mulagroup_reporting_framework.md`
 - `mulagroup_ai_triage_prompt_library.md`
 
 These define:
+
 - analytics logic,
 - dashboards,
 - reporting rhythm,
@@ -170,9 +187,11 @@ These define:
 ---
 
 ## 3.7 Case studies and trust content
+
 - `mulagroup_case_study_framework.md`
 
 This defines:
+
 - how to document and present proof of work,
 - how to create reusable trust-building project stories.
 
@@ -183,25 +202,31 @@ This defines:
 If there is any conflict between documents, use this order of precedence:
 
 ## Level 1 — Brand and ecosystem truth
+
 1. `mulagroup_master_vision.md`
 2. `mulagroup_ecosystem_blueprint.md`
 3. `mulagroup_brand_strategy.md`
 
 ## Level 2 — UI/content truth
+
 4. `mulagroup_content_system.md`
 5. `mulagroup_design_system_spec.md`
 
 ## Level 3 — Technical truth
+
 6. `mulagroup_codex_build_spec.md`
 7. `mulagroup_cms_schema_spec.md`
 
 ## Level 4 — Pillar implementation truth
+
 8. pillar blueprint files
 
 ## Level 5 — Operations and automation truth
+
 9. sales / operating / analytics / AI files
 
 If something is unclear:
+
 - preserve the brand direction,
 - preserve the ecosystem structure,
 - preserve the design system,
@@ -214,19 +239,24 @@ If something is unclear:
 Any AI coding agent working on this repository should follow these rules.
 
 ## 5.1 Read before building
+
 Before implementing anything, always review:
+
 - `mulagroup_brand_strategy.md`
 - `mulagroup_content_system.md`
 - `mulagroup_design_system_spec.md`
 - `mulagroup_codex_build_spec.md`
 
 If building a pillar:
+
 - also read the relevant pillar blueprint.
 
 ---
 
 ## 5.2 Build reusable systems first
+
 Always build in this order:
+
 1. repo / app structure
 2. design tokens
 3. shared UI primitives
@@ -239,7 +269,9 @@ Always build in this order:
 ---
 
 ## 5.3 Do not improvise brand direction
+
 Do not:
+
 - invent a new visual style,
 - create random startup-like UI,
 - mix unrelated styles across pillars,
@@ -249,7 +281,9 @@ Do not:
 ---
 
 ## 5.4 Keep the system modular
+
 Every implementation should:
+
 - prefer shared packages,
 - prefer reusable components,
 - prefer content-driven architecture,
@@ -258,6 +292,7 @@ Every implementation should:
 ---
 
 ## 5.5 Respect hierarchy
+
 The main site is the ecosystem portal.  
 Subdomains are focused pillar sites.  
 Do not turn `mulagroup.eu` into a cluttered services site.
@@ -267,6 +302,7 @@ Do not turn `mulagroup.eu` into a cluttered services site.
 # 6. Repository working model
 
 ## 6.1 Recommended docs location
+
 All strategic and architectural documents should live in a structure similar to:
 
 ```text
@@ -287,7 +323,9 @@ Suggested subfolders:
 ---
 
 ## 6.2 Suggested project structure
+
 The implementation should follow the monorepo logic described in:
+
 - `mulagroup_codex_build_spec.md`
 
 High-level structure:
@@ -305,10 +343,12 @@ High-level structure:
 # 7. Recommended implementation order
 
 ## Phase 1 — Foundation
+
 Goal:
 Create the base technical and design infrastructure.
 
 Included:
+
 - monorepo setup
 - app shells
 - shared UI package
@@ -318,6 +358,7 @@ Included:
 - baseline content architecture
 
 Core files:
+
 - `mulagroup_codex_build_spec.md`
 - `mulagroup_design_system_spec.md`
 - `mulagroup_brand_strategy.md`
@@ -325,10 +366,12 @@ Core files:
 ---
 
 ## Phase 2 — Main portal
+
 Goal:
 Build `mulagroup.eu` as the ecosystem portal.
 
 Included:
+
 - hero
 - about
 - ecosystem pillars section
@@ -339,6 +382,7 @@ Included:
 - footer
 
 Core files:
+
 - `mulagroup_ecosystem_blueprint.md`
 - `mulagroup_content_system.md`
 - `mulagroup_brand_strategy.md`
@@ -346,10 +390,12 @@ Core files:
 ---
 
 ## Phase 3 — Pillar sites
+
 Goal:
 Build pillar subdomains one by one.
 
 Recommended order:
+
 1. Strategy
 2. Digital
 3. Commerce
@@ -358,6 +404,7 @@ Recommended order:
 6. Lifestyle
 
 Core files:
+
 - corresponding pillar blueprint
 - content system
 - design system
@@ -366,10 +413,12 @@ Core files:
 ---
 
 ## Phase 4 — CMS and content backend
+
 Goal:
 Move from static content to structured content operations.
 
 Included:
+
 - CMS schema implementation
 - page models
 - service models
@@ -377,15 +426,18 @@ Included:
 - form configuration models
 
 Core files:
+
 - `mulagroup_cms_schema_spec.md`
 
 ---
 
 ## Phase 5 — Sales and operating layer
+
 Goal:
 Integrate lead handling, routing, CRM logic and internal workflows.
 
 Included:
+
 - forms → CRM
 - lead scoring
 - operating system logic
@@ -395,6 +447,7 @@ Included:
 - offer structure
 
 Core files:
+
 - `mulagroup_sales_framework.md`
 - `mulagroup_operating_system.md`
 - `mulagroup_lead_scoring_model.md`
@@ -403,10 +456,12 @@ Core files:
 ---
 
 ## Phase 6 — Analytics, dashboards and AI
+
 Goal:
 Add operational intelligence.
 
 Included:
+
 - analytics events
 - dashboards
 - reporting
@@ -414,6 +469,7 @@ Included:
 - automation support
 
 Core files:
+
 - `mulagroup_analytics_event_map.md`
 - `mulagroup_dashboard_spec.md`
 - `mulagroup_reporting_framework.md`
@@ -424,38 +480,53 @@ Core files:
 # 8. What should happen right now
 
 ## Current recommended phase
-**Phase 1 — Foundation**
 
-This means the immediate next technical task should be:
+**Phase 9 — CMS & Content Backend**
 
-- scaffold the monorepo
-- create shared packages
-- implement design tokens
-- implement UI primitives
-- create app shell for `mulagroup-main`
-- prepare app shells for pillar apps
-- set up routing and content folder patterns
+This means the current implementation state is:
+
+- Phase 1 — Foundation is complete and stable
+- Phase 2 — Main Portal is complete and reviewed
+- Phase 3 — Strategy Pillar is complete, reviewed and stabilized
+- Phase 4 — Digital Pillar is complete, reviewed and stabilized
+- Phase 5 — Commerce Pillar is complete, reviewed and stabilized
+- Phase 6 — Industry Pillar is complete, reviewed and stabilized
+- Phase 7 — Projects Pillar is complete, reviewed and stabilized
+- Phase 8 — Lifestyle Pillar is complete, reviewed and stabilized
+- the shared system is now strong enough to move into CMS and structured content operations
+
+The immediate next technical task should be:
+
+- build the structured CMS and content backend layer
+- preserve the visual and structural consistency established across portal and all stabilized pillars
+- map the current manifest-driven content model into CMS-ready schemas and editorial structures
+- keep implementation focused on content architecture without introducing CRM, analytics or AI logic yet
 
 Do **not** yet:
-- fully build all pillar sites,
+
 - implement CRM logic,
 - build dashboards,
 - go deep into AI automation,
-- overbuild CMS before the frontend architecture is stable.
+- redesign the pillar system after stabilization,
+- mix content-operations work with later operational systems too early.
 
 ---
 
 # 9. What success looks like at the current stage
 
-Phase 1 is successful when:
-- repo structure exists,
-- apps are scaffolded,
-- shared UI exists,
-- design tokens exist,
-- styles are aligned with the design system,
-- the system is ready to build the main portal on top of it.
+The current milestone is successful when:
 
-That is the real milestone — not visual perfection yet.
+- Phase 1 and Phase 2 remain technically stable,
+- `mulagroup.eu` clearly represents the ecosystem,
+- the Strategy pillar clearly communicates its role and entry-point logic,
+- the Digital, Commerce and Industry pillars clearly communicate their role and stay aligned with the shared system,
+- the Projects pillar clearly communicates its role and is fully stabilized,
+- the Lifestyle pillar clearly communicates structured premium experience and is fully stabilized,
+- the shared design language is strong enough to carry the ecosystem into CMS and content operations,
+- the repo is ready to move into Phase 9 without reworking the portal or previously stabilized pillars,
+- docs and implementation point to the same next step.
+
+That is the real milestone before CMS and operating layers begin.
 
 ---
 
@@ -464,6 +535,7 @@ That is the real milestone — not visual perfection yet.
 Use this format when assigning work to Codex:
 
 ## Task template
+
 - Goal
 - Source of truth files
 - Scope of this step
@@ -471,27 +543,32 @@ Use this format when assigning work to Codex:
 - Expected output
 
 ### Example
+
 Goal:
 Build the monorepo foundation for the Mula Group ecosystem.
 
 Source of truth files:
+
 - `mulagroup_codex_build_spec.md`
 - `mulagroup_design_system_spec.md`
 - `mulagroup_brand_strategy.md`
 
 Scope:
+
 - repo structure
 - shared UI package
 - design tokens
-- app shell for `mulagroup-main`
+- app shell for `portal`
 
 Do not:
+
 - build full pillar pages
 - implement CRM
 - create dashboards
 - improvise new visual styles
 
 Expected output:
+
 - working monorepo scaffold
 - shared packages
 - base layout
@@ -502,6 +579,7 @@ Expected output:
 # 11. Recommended “do not do this” list
 
 Do not:
+
 - start from all pillar sites at once
 - build AI agents before forms and CRM logic are stable
 - put too much logic into the homepage
@@ -516,15 +594,18 @@ Do not:
 # 12. Recommended first tasks after this file
 
 ## Immediate next task
-**Build the foundation repo**
+
+**Move into Phase 9 — CMS & Content Backend**
 
 ## After that
-**Build `mulagroup.eu` homepage**
+
+**Then continue with sales/CRM operations only after the CMS and content layer is stable enough**
 
 ## After that
-**Build `strategy.mulagroup.eu`**
 
-That is the strongest first sequence.
+**Then continue with analytics, reporting and AI layers in documented order**
+
+That is the strongest next sequence after a stable full pillar rollout.
 
 ---
 
@@ -535,6 +616,7 @@ The next document that should sit next to this one is:
 `IMPLEMENTATION_PHASES.md`
 
 Its purpose:
+
 - track current phase,
 - define done criteria,
 - list active tasks,
@@ -555,4 +637,3 @@ If this file does not exist yet, create it.
 6. Always prefer clear scope over chaotic speed.
 7. The goal is not just to build websites.
 8. The goal is to build the digital foundation of the Mula Group ecosystem.
-

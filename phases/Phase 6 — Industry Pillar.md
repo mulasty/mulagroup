@@ -1,4 +1,4 @@
-
+﻿
 # Phase 6 — Industry Pillar
 
 ## Purpose of this file

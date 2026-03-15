@@ -1,4 +1,4 @@
-# Mula Group — Industry Site Blueprint
+﻿# Mula Group — Industry Site Blueprint
 
 ## Cel dokumentu
 Ten dokument definiuje blueprint strony **`industry.mulagroup.eu`** — filaru Industry w ekosystemie Mula Group.

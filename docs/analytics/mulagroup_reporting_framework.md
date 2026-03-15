@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Reporting Framework
 
 ## Cel dokumentu

@@ -1,0 +1,23 @@
+{
+  "name": "@mulagroup/ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./components": "./src/components/index.ts",
+    "./layout": "./src/layout/index.ts",
+    "./pages": "./src/pages/index.ts",
+    "./sections": "./src/sections/index.ts"
+  },
+  "dependencies": {
+    "@mulagroup/content-models": "workspace:*",
+    "@mulagroup/utils": "workspace:*",
+    "react": "19.2.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

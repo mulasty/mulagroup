@@ -1,4 +1,4 @@
-
+﻿
 # CODEX_WORKFLOW.md
 
 ## Purpose
@@ -115,6 +115,7 @@ Examples:
 - commerce_site_blueprint.md
 - industry_site_blueprint.md
 - projects_site_blueprint.md
+- lifestyle_site_blueprint.md
 
 These files determine:
 
@@ -148,10 +149,11 @@ Phase 5 — Commerce Pillar
 Phase 6 — Industry Pillar
 Phase 7 — Projects Pillar
 Phase 8 — Lifestyle Pillar
-Phase 9 — CMS
-Phase 10 — Sales / CRM
-Phase 11 — Analytics / AI
+Phase 9 — CMS & Content Backend
+Phase 10 — Sales, CRM & Lead Operations
 ```
+
+Analytics, reporting and AI are the next planned layer after Phase 10 and are currently documented in `/docs/analytics` and `/docs/ai`.
 
 Agents must **never skip phases**.
 

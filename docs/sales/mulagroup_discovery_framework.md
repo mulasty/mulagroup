@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Discovery Framework
 
 ## Cel dokumentu

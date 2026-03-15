@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Analytics Event Map
 
 ## Cel dokumentu

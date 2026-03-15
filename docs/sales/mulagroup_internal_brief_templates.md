@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — Internal Brief Templates
 
 ## Cel dokumentu

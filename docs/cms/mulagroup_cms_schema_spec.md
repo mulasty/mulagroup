@@ -1,4 +1,4 @@
-
+﻿
 # Mula Group — CMS Schema Spec
 
 ## Cel dokumentu
@@ -767,7 +767,7 @@ Dodać:
 2. Zdefiniować Page + Hero + SectionBlock
 3. Zdefiniować Pillar + Service + OfferFormat
 4. Zdefiniować CTA + FAQ + FormDefinition
-5. Podpiąć frontend `mulagroup-main`
+5. Podpiąć frontend `portal`
 6. Podpiąć frontend filarów
 7. Dodać CaseStudy + Article
 8. Dodać governance i SEO workflows

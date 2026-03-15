@@ -1,4 +1,4 @@
-
+﻿
 # Phase 3 — Strategy Pillar
 
 ## Purpose of this file

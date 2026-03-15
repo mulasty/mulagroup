@@ -1,4 +1,4 @@
-# Mula Group — Commerce Site Blueprint
+﻿# Mula Group — Commerce Site Blueprint
 
 ## Cel dokumentu
 Ten dokument definiuje blueprint strony **`commerce.mulagroup.eu`** — filaru Commerce w ekosystemie Mula Group.

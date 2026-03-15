@@ -1,4 +1,4 @@
-
+﻿
 # MULAGROUP_REPOSITORY_STRUCTURE.md
 
 ## Purpose
@@ -72,7 +72,8 @@ This structure assumes a **monorepo style architecture** for the full Mula Group
 │   ├── digital_site_blueprint.md
 │   ├── commerce_site_blueprint.md
 │   ├── industry_site_blueprint.md
-│   └── projects_site_blueprint.md
+│   ├── projects_site_blueprint.md
+│   └── lifestyle_site_blueprint.md
 │
 ├── phases
 │   ├── Phase 1 — Foundation.md
@@ -120,6 +121,12 @@ This structure assumes a **monorepo style architecture** for the full Mula Group
 │   │
 │   ├── crm
 │   │   └── lead models and CRM integrations
+│   │
+│   ├── config
+│   │   └── shared configuration and tooling
+│   │
+│   ├── utils
+│   │   └── shared utilities
 │   │
 │   └── ai
 │       └── AI agents and triage logic
