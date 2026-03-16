@@ -1,7 +1,7 @@
 import { cn } from "@mulagroup/utils";
 
-type BrandLogoVariant = "black" | "blue" | "gold" | "white";
-type BrandLogoSize = "lg" | "md" | "sm";
+export type BrandLogoVariant = "black" | "blue" | "gold" | "white";
+export type BrandLogoSize = "lg" | "md" | "sm";
 
 const logoSources: Record<BrandLogoVariant, string> = {
   black: "/brand/logos/mula-group-badge-black.png",
@@ -22,7 +22,7 @@ const logoPixels: Record<BrandLogoSize, number> = {
   lg: 72,
 };
 
-type BrandLogoProps = {
+export type BrandLogoProps = {
   alt?: string;
   className?: string;
   size?: BrandLogoSize;

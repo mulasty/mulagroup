@@ -8,6 +8,7 @@ export * from "./FaqAccordion";
 export * from "./HeadingBlock";
 export * from "./InquiryPreviewPanel";
 export * from "./Input";
+export * from "./InteractiveBrandLogo";
 export * from "./Label";
 export * from "./MetricCard";
 export * from "./PillarCard";

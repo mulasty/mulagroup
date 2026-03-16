@@ -78,7 +78,7 @@ export function SiteHeader({ site }: SiteHeaderProps) {
     >
       <Container className="flex min-h-20 items-center justify-between gap-6">
         <a className="flex min-w-0 items-center gap-3" href="/">
-          <BrandLogo className="shrink-0" size="sm" variant="white" />
+          <BrandLogo className="shrink-0 scale-[1.6] transform-gpu" size="sm" variant="white" />
           <span className="min-w-0">
             <span className="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
               {site.type === "portal" ? "Integrated business ecosystem" : `${site.name} pillar`}
@@ -137,7 +137,11 @@ export function SiteHeader({ site }: SiteHeaderProps) {
           >
             <div className="mb-4 flex items-center justify-between gap-4 border-b border-white/8 pb-4">
               <div className="flex min-w-0 items-center gap-3">
-                <BrandLogo className="shrink-0" size="sm" variant="white" />
+                <BrandLogo
+                  className="shrink-0 scale-[1.6] transform-gpu"
+                  size="sm"
+                  variant="white"
+                />
                 <div className="space-y-1">
                   <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-slate-500">
                     Navigation

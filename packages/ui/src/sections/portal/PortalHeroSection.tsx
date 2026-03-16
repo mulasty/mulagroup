@@ -1,6 +1,6 @@
 import type { PortalManifest } from "@mulagroup/content-models";
 
-import { Badge, Button, Card, Checklist, MetricCard, Section } from "../../components";
+import { Badge, Button, InteractiveBrandLogo, Section } from "../../components";
 
 type PortalHeroSectionProps = {
   portal: PortalManifest;
@@ -16,7 +16,9 @@ export function PortalHeroSection({ portal }: PortalHeroSectionProps) {
             <h1 className="text-balance max-w-5xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
               {portal.hero.title}
             </h1>
-            <p className="max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">{portal.hero.description}</p>
+            <p className="max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
+              {portal.hero.description}
+            </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button data-cta="portal-hero-primary" href={portal.hero.primaryCta.href} size="lg">
@@ -43,59 +45,29 @@ export function PortalHeroSection({ portal }: PortalHeroSectionProps) {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative flex min-h-[20rem] items-center justify-center overflow-hidden rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] px-6 py-12 sm:min-h-[24rem] sm:px-10 lg:min-h-[32rem] lg:px-14">
           <div
             aria-hidden="true"
-            className="absolute inset-x-6 top-4 h-32 rounded-full bg-[radial-gradient(circle,_var(--brand-accent-soft),_transparent_70%)] blur-2xl"
+            className="absolute inset-x-6 top-8 h-36 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.16),_transparent_72%)] blur-3xl"
           />
-          <Card className="relative overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(15,23,42,0.62))]">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-slate-400">
-                    Ecosystem headquarters
-                  </span>
-                  <span className="text-sm text-slate-400">{portal.tagline}</span>
-                </div>
-                <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                  Built to connect the right capabilities around the real business objective.
-                </h2>
-                <p className="text-sm leading-7 text-slate-300">{portal.summary}</p>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {portal.stats.map((stat) => (
-                  <MetricCard key={stat.label} stat={stat} />
-                ))}
-              </div>
-
-              <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(240px,0.82fr)]">
-                <Card className="border border-white/8 bg-white/[0.04]" variant="subtle">
-                  <div className="space-y-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-                      Connection logic
-                    </p>
-                    <Checklist items={portal.about.principles} />
-                  </div>
-                </Card>
-                <Card className="border border-white/8 bg-white/[0.04]" variant="subtle">
-                  <div className="space-y-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Pillar map</p>
-                    <div className="flex flex-wrap gap-2">
-                      {portal.pillars.map((pillar) => (
-                        <span
-                          className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs font-medium text-slate-200"
-                          key={pillar.key}
-                        >
-                          {pillar.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Card>
-              </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-12 bottom-8 h-28 rounded-full bg-[radial-gradient(circle,_rgba(37,99,235,0.22),_transparent_72%)] blur-3xl"
+          />
+          <div className="relative flex w-full flex-col items-center justify-center gap-5 text-center">
+            <InteractiveBrandLogo
+              alt="Mula Group white emblem"
+              baseScale={1.8}
+              className="h-56 w-56 drop-shadow-[0_24px_80px_rgba(15,23,42,0.52)] sm:h-72 sm:w-72 lg:h-[24rem] lg:w-[24rem] xl:h-[28rem] xl:w-[28rem]"
+              variant="white"
+            />
+            <div className="space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-slate-500">
+                Mula Group
+              </p>
+              <p className="mx-auto max-w-sm text-sm leading-7 text-slate-400">{portal.tagline}</p>
             </div>
-          </Card>
+          </div>
         </div>
       </div>
     </Section>

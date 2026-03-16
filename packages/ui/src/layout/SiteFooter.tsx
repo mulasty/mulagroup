@@ -18,7 +18,7 @@ export function SiteFooter({ site }: SiteFooterProps) {
       <Container className="grid gap-12 xl:grid-cols-[minmax(0,0.82fr)_180px_minmax(0,0.98fr)] xl:items-start">
         <div className="space-y-5">
           <div className="flex items-start gap-4">
-            <BrandLogo className="shrink-0" size="lg" variant="white" />
+            <BrandLogo className="shrink-0 scale-[1.6] transform-gpu" size="lg" variant="white" />
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
                 {site.type === "portal" ? "Mula Group ecosystem" : "Mula Group pillar"}
