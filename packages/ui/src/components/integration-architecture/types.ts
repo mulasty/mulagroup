@@ -29,10 +29,13 @@ export type IntegrationSubNodeConfig = {
   secondaryLabel?: string;
 };
 
+export type IntegrationBranchSide = "left" | "right";
+
 export type IntegrationMainNodeConfig = {
   id: string;
   label: string;
   scene: "mainFirst" | "mainSecond";
+  side: IntegrationBranchSide;
   subScene:
     | "marketing"
     | "sales"
@@ -40,6 +43,7 @@ export type IntegrationMainNodeConfig = {
     | "logisticsFinanceErp"
     | "aiReporting";
   subnodes: IntegrationSubNodeConfig[];
+  tone: string;
 };
 
 export type IntegrationCrossLinkConfig = {

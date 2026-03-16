@@ -173,12 +173,15 @@ const BRANCH_CONFIG = [
   {
     id: "marketing",
     scene: "mainFirst",
+    side: "right",
     subScene: "marketing",
     subnodes: ["website", "landingPages", "forms", "seo", "campaignInputs", "socialCapture"],
+    tone: "#6f74ff",
   },
   {
     id: "sales",
     scene: "mainFirst",
+    side: "right",
     subScene: "sales",
     subnodes: [
       "crmPipeline",
@@ -188,16 +191,20 @@ const BRANCH_CONFIG = [
       "proposals",
       "meetingFlow",
     ],
+    tone: "#a85dff",
   },
   {
     id: "operations",
     scene: "mainFirst",
+    side: "right",
     subScene: "commerceOperations",
     subnodes: ["taskRouting", "serviceStages", "approvals", "documentFlow", "deliveryWorkflow"],
+    tone: "#f05aba",
   },
   {
     id: "reporting",
     scene: "mainFirst",
+    side: "left",
     subScene: "aiReporting",
     subnodes: [
       "ownerDashboard",
@@ -206,16 +213,20 @@ const BRANCH_CONFIG = [
       "monthlyReview",
       "managementAlerts",
     ],
+    tone: "#ff7157",
   },
   {
     id: "commerce",
     scene: "mainSecond",
+    side: "left",
     subScene: "commerceOperations",
     subnodes: ["orders", "catalogLogic", "marketplaceSync", "paymentStatus", "quotationFlow"],
+    tone: "#9edc4b",
   },
   {
     id: "logistics",
     scene: "mainSecond",
+    side: "left",
     subScene: "logisticsFinanceErp",
     subnodes: [
       "courierIntegrations",
@@ -224,22 +235,28 @@ const BRANCH_CONFIG = [
       "dispatchAlerts",
       "returnsFlow",
     ],
+    tone: "#57d06d",
   },
   {
     id: "finance",
     scene: "mainSecond",
+    side: "left",
     subScene: "logisticsFinanceErp",
     subnodes: ["invoicing", "reconciliation", "bookkeepingExport", "marginChecks", "financeDashboard"],
+    tone: "#f3ab44",
   },
   {
     id: "erp",
     scene: "mainSecond",
+    side: "left",
     subScene: "logisticsFinanceErp",
     subnodes: ["stockLevels", "skuLogic", "supplierSync", "inventoryMovement", "warehouseStatus"],
+    tone: "#ddc746",
   },
   {
     id: "ai",
     scene: "mainSecond",
+    side: "right",
     subScene: "aiReporting",
     subnodes: [
       "aiSummaries",
@@ -248,6 +265,7 @@ const BRANCH_CONFIG = [
       "anomalyDetection",
       "decisionSupport",
     ],
+    tone: "#ff4f8f",
   },
 ] as const;
 
@@ -319,11 +337,13 @@ export function getIntegrationArchitectureModel(locale: AppLocale): IntegrationA
       id: branch.id,
       label: BRANCH_TRANSLATIONS[locale][branch.id],
       scene: branch.scene,
+      side: branch.side,
       subScene: branch.subScene,
       subnodes: branch.subnodes.map((subnodeId) => ({
         id: subnodeId,
         label: SUBNODE_TRANSLATIONS[locale][subnodeId],
       })),
+      tone: branch.tone,
     })),
   };
 }

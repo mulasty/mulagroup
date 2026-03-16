@@ -1,295 +1,171 @@
-import type { IntegrationPoint } from "./types";
+import type { IntegrationBranchSide, IntegrationMainNodeConfig, IntegrationPoint } from "./types";
 
-type BranchLayoutId =
-  | "ai"
-  | "commerce"
-  | "erp"
-  | "finance"
-  | "logistics"
-  | "marketing"
-  | "operations"
-  | "reporting"
-  | "sales";
-
-type BranchSectorConfig = {
-  maxRingCount: number;
-  maxSubRadius: number;
-  ringGap: number;
-  sectorEnd: number;
-  sectorStart: number;
-  subBaseRadius: number;
-};
-
-export type IntegrationBranchGeometry = {
-  mainAngle: number;
+export type IntegrationTreeBranchGeometry = {
+  mainConnectionPoint: IntegrationPoint;
   mainPosition: IntegrationPoint;
+  node: IntegrationMainNodeConfig;
   subnodePositions: IntegrationPoint[];
 };
 
+export type IntegrationTreeLayout = {
+  branches: IntegrationTreeBranchGeometry[];
+  center: IntegrationPoint;
+};
+
 export const INTEGRATION_CANVAS = {
-  center: { x: 700, y: 390 },
-  height: 820,
+  center: { x: 700, y: 490 },
+  height: 980,
   width: 1400,
 } as const;
 
-const ESTIMATED_SUBNODE_WIDTH = 112;
-const SUBNODE_CLUSTER_GAP = 14;
-const MIN_SUBNODE_ARC_SPACING = ESTIMATED_SUBNODE_WIDTH + SUBNODE_CLUSTER_GAP;
-const DEFAULT_SECTOR_PADDING_DEGREES = 6;
-const MAIN_NODE_RADIUS = 248;
+const CORE_HALF_WIDTH = 102;
+const MAIN_HALF_WIDTH = 80;
+const LEAF_DOT_OFFSET = 16;
+const MAIN_NODE_X = {
+  left: 484,
+  right: 916,
+} as const;
+const SUBNODE_X = {
+  left: 190,
+  right: 1210,
+} as const;
+const SIDE_BOUNDS = {
+  left: { endY: 820, startY: 150 },
+  right: { endY: 840, startY: 180 },
+} as const;
 
-const BRANCH_LAYOUT: Record<BranchLayoutId, BranchSectorConfig> = {
-  ai: {
-    maxRingCount: 3,
-    maxSubRadius: 510,
-    ringGap: 42,
-    sectorEnd: 10,
-    sectorStart: 336,
-    subBaseRadius: 424,
-  },
-  commerce: {
-    maxRingCount: 3,
-    maxSubRadius: 450,
-    ringGap: 38,
-    sectorEnd: 188,
-    sectorStart: 158,
-    subBaseRadius: 374,
-  },
-  erp: {
-    maxRingCount: 3,
-    maxSubRadius: 468,
-    ringGap: 38,
-    sectorEnd: 86,
-    sectorStart: 52,
-    subBaseRadius: 382,
-  },
-  finance: {
-    maxRingCount: 3,
-    maxSubRadius: 404,
-    ringGap: 34,
-    sectorEnd: 120,
-    sectorStart: 84,
-    subBaseRadius: 326,
-  },
-  logistics: {
-    maxRingCount: 3,
-    maxSubRadius: 486,
-    ringGap: 42,
-    sectorEnd: 154,
-    sectorStart: 124,
-    subBaseRadius: 404,
-  },
-  marketing: {
-    maxRingCount: 3,
-    maxSubRadius: 486,
-    ringGap: 42,
-    sectorEnd: 234,
-    sectorStart: 188,
-    subBaseRadius: 404,
-  },
-  operations: {
-    maxRingCount: 3,
-    maxSubRadius: 484,
-    ringGap: 42,
-    sectorEnd: 336,
-    sectorStart: 302,
-    subBaseRadius: 404,
-  },
-  reporting: {
-    maxRingCount: 3,
-    maxSubRadius: 520,
-    ringGap: 42,
-    sectorEnd: 52,
-    sectorStart: 14,
-    subBaseRadius: 438,
-  },
-  sales: {
-    maxRingCount: 3,
-    maxSubRadius: 412,
-    ringGap: 34,
-    sectorEnd: 294,
-    sectorStart: 244,
-    subBaseRadius: 338,
-  },
-};
-
-function isBranchLayoutId(nodeId: string): nodeId is BranchLayoutId {
-  return nodeId in BRANCH_LAYOUT;
-}
-
-function degreesToRadians(angle: number) {
-  return (angle * Math.PI) / 180;
-}
-
-function normalizeAngle(angle: number) {
-  let normalized = angle % 360;
-
-  if (normalized < 0) {
-    normalized += 360;
+function distributeEvenly(start: number, end: number, count: number) {
+  if (count <= 1) {
+    return [(start + end) / 2];
   }
 
-  return normalized;
-}
+  return Array.from({ length: count }, (_, index) => {
+    const progress = index / (count - 1);
 
-function getSectorSpan(start: number, end: number) {
-  const normalizedStart = normalizeAngle(start);
-  const normalizedEnd = normalizeAngle(end);
-  const delta = normalizedEnd - normalizedStart;
-
-  return delta <= 0 ? delta + 360 : delta;
-}
-
-function interpolateAngle(start: number, end: number, progress: number) {
-  const span = getSectorSpan(start, end);
-
-  return normalizeAngle(start + span * progress);
-}
-
-function polarPoint(radius: number, angle: number): IntegrationPoint {
-  const radians = degreesToRadians(angle);
-
-  return {
-    x: INTEGRATION_CANVAS.center.x + Math.cos(radians) * radius,
-    y: INTEGRATION_CANVAS.center.y + Math.sin(radians) * radius,
-  };
-}
-
-function getSectorPadding(start: number, end: number) {
-  return Math.min(DEFAULT_SECTOR_PADDING_DEGREES, getSectorSpan(start, end) / 6);
-}
-
-function getSectorMidpoint(start: number, end: number) {
-  return interpolateAngle(start, end, 0.5);
-}
-
-function getRingCapacity(radius: number, effectiveSpan: number) {
-  const arcLength = radius * degreesToRadians(effectiveSpan);
-
-  return Math.max(1, Math.floor(arcLength / MIN_SUBNODE_ARC_SPACING) + 1);
-}
-
-function getBranchLayout(nodeId: string) {
-  if (!isBranchLayoutId(nodeId)) {
-    throw new Error(`Unknown integration branch layout: ${nodeId}`);
-  }
-
-  return BRANCH_LAYOUT[nodeId];
-}
-
-function buildSubnodePositions(branchId: BranchLayoutId, count: number) {
-  const layout = BRANCH_LAYOUT[branchId];
-  const padding = getSectorPadding(layout.sectorStart, layout.sectorEnd);
-  const paddedStart = normalizeAngle(layout.sectorStart + padding);
-  const paddedEnd = normalizeAngle(layout.sectorEnd - padding);
-  const effectiveSpan = Math.max(10, getSectorSpan(paddedStart, paddedEnd));
-  const ringRadii = Array.from({ length: layout.maxRingCount }, (_, ringIndex) => {
-    const radius = Math.min(layout.subBaseRadius + ringIndex * layout.ringGap, layout.maxSubRadius);
-
-    return {
-      capacity: getRingCapacity(radius, effectiveSpan),
-      radius,
-    };
-  });
-
-  let requiredRings = 0;
-  let capacityTotal = 0;
-
-  while (requiredRings < ringRadii.length && capacityTotal < count) {
-    capacityTotal += ringRadii[requiredRings]?.capacity ?? 0;
-    requiredRings += 1;
-  }
-
-  const resolvedRings = Math.max(1, requiredRings);
-  const activeRings = ringRadii.slice(0, resolvedRings);
-  const ringCounts = activeRings.map(() => 1);
-  let remaining = count - resolvedRings;
-
-  while (remaining > 0) {
-    let assigned = false;
-
-    for (let ringIndex = activeRings.length - 1; ringIndex >= 0 && remaining > 0; ringIndex -= 1) {
-      const ringCapacity = activeRings[ringIndex]?.capacity ?? 0;
-      const currentCount = ringCounts[ringIndex] ?? 0;
-
-      if (currentCount >= ringCapacity) {
-        continue;
-      }
-
-      ringCounts[ringIndex] = currentCount + 1;
-      remaining -= 1;
-      assigned = true;
-    }
-
-    if (!assigned) {
-      break;
-    }
-  }
-
-  return activeRings.flatMap((ring, ringIndex) => {
-    const nodeCount = ringCounts[ringIndex] ?? 0;
-
-    return Array.from({ length: nodeCount }, (_, nodeIndex) => {
-      if (nodeCount === 1) {
-        return polarPoint(ring.radius, getSectorMidpoint(paddedStart, paddedEnd));
-      }
-
-      const progress =
-        ringIndex % 2 === 0
-          ? nodeIndex / (nodeCount - 1)
-          : (nodeIndex + 1) / (nodeCount + 1);
-      const angle = interpolateAngle(paddedStart, paddedEnd, progress);
-
-      return polarPoint(ring.radius, angle);
-    });
+    return start + (end - start) * progress;
   });
 }
 
-export function getMainNodePosition(nodeId: string): IntegrationPoint {
-  const layout = getBranchLayout(nodeId);
+function getLeafSpread(nodeCount: number) {
+  if (nodeCount <= 1) {
+    return 0;
+  }
 
-  return polarPoint(MAIN_NODE_RADIUS, getSectorMidpoint(layout.sectorStart, layout.sectorEnd));
+  return Math.min(232, Math.max(128, (nodeCount - 1) * 34));
 }
 
-export function getBranchGeometry(nodeId: string, subnodeCount: number): IntegrationBranchGeometry {
-  const layout = getBranchLayout(nodeId);
-  const mainAngle = getSectorMidpoint(layout.sectorStart, layout.sectorEnd);
+function getNodeYPositions(side: IntegrationBranchSide, count: number) {
+  const bounds = SIDE_BOUNDS[side];
 
+  return distributeEvenly(bounds.startY, bounds.endY, count);
+}
+
+function getSubnodePositions(
+  side: IntegrationBranchSide,
+  mainY: number,
+  subnodeCount: number,
+): IntegrationPoint[] {
+  const spread = getLeafSpread(subnodeCount);
+  const startY = mainY - spread / 2;
+  const endY = mainY + spread / 2;
+
+  return distributeEvenly(startY, endY, subnodeCount).map((y) => ({
+    x: SUBNODE_X[side],
+    y,
+  }));
+}
+
+function getMainConnectionPoint(side: IntegrationBranchSide, position: IntegrationPoint): IntegrationPoint {
   return {
-    mainAngle,
-    mainPosition: polarPoint(MAIN_NODE_RADIUS, mainAngle),
-    subnodePositions: buildSubnodePositions(nodeId as BranchLayoutId, subnodeCount),
+    x: position.x + (side === "right" ? -MAIN_HALF_WIDTH : MAIN_HALF_WIDTH),
+    y: position.y,
   };
 }
 
-export function getSubnodePosition(nodeId: string, index: number, subnodeCount: number): IntegrationPoint {
-  const subnodePositions = buildSubnodePositions(nodeId as BranchLayoutId, subnodeCount);
-  const position = subnodePositions[index];
-
-  if (!position) {
-    throw new Error(`Unknown integration subnode position: ${nodeId}:${String(index)}`);
-  }
-
-  return position;
+export function getCoreConnectionPoint(side: IntegrationBranchSide): IntegrationPoint {
+  return {
+    x: INTEGRATION_CANVAS.center.x + (side === "right" ? CORE_HALF_WIDTH : -CORE_HALF_WIDTH),
+    y: INTEGRATION_CANVAS.center.y,
+  };
 }
 
-export function buildCurvedPath(from: IntegrationPoint, to: IntegrationPoint, bend = 0.14) {
-  const deltaX = to.x - from.x;
-  const deltaY = to.y - from.y;
-  const length = Math.hypot(deltaX, deltaY) || 1;
-  const normalX = -deltaY / length;
-  const normalY = deltaX / length;
-  const midpointX = from.x + deltaX / 2;
-  const midpointY = from.y + deltaY / 2;
-  const curveStrength = Math.min(84, length * bend);
+export function getLeafConnectionPoint(side: IntegrationBranchSide, position: IntegrationPoint): IntegrationPoint {
+  return {
+    x: position.x + (side === "right" ? -LEAF_DOT_OFFSET : LEAF_DOT_OFFSET),
+    y: position.y,
+  };
+}
+
+export function buildCoreBranchPath(from: IntegrationPoint, to: IntegrationPoint, side: IntegrationBranchSide) {
+  const direction = side === "right" ? 1 : -1;
 
   return [
     "M",
     String(from.x),
     String(from.y),
-    "Q",
-    String(midpointX + normalX * curveStrength),
-    String(midpointY + normalY * curveStrength),
+    "C",
+    String(from.x + direction * 92),
+    String(from.y),
+    String(to.x - direction * 124),
+    String(to.y),
     String(to.x),
     String(to.y),
   ].join(" ");
+}
+
+export function buildLeafBranchPath(from: IntegrationPoint, to: IntegrationPoint, side: IntegrationBranchSide) {
+  const direction = side === "right" ? 1 : -1;
+
+  return [
+    "M",
+    String(from.x),
+    String(from.y),
+    "C",
+    String(from.x + direction * 86),
+    String(from.y),
+    String(to.x - direction * 62),
+    String(to.y),
+    String(to.x),
+    String(to.y),
+  ].join(" ");
+}
+
+export function buildIntegrationTreeLayout(nodes: IntegrationMainNodeConfig[]): IntegrationTreeLayout {
+  const leftNodes = nodes.filter((node) => node.side === "left");
+  const rightNodes = nodes.filter((node) => node.side === "right");
+  const leftYPositions = getNodeYPositions("left", leftNodes.length);
+  const rightYPositions = getNodeYPositions("right", rightNodes.length);
+
+  const leftBranches = leftNodes.map((node, index) => {
+    const mainPosition = {
+      x: MAIN_NODE_X.left,
+      y: leftYPositions[index] ?? INTEGRATION_CANVAS.center.y,
+    };
+
+    return {
+      mainConnectionPoint: getMainConnectionPoint("left", mainPosition),
+      mainPosition,
+      node,
+      subnodePositions: getSubnodePositions("left", mainPosition.y, node.subnodes.length),
+    };
+  });
+
+  const rightBranches = rightNodes.map((node, index) => {
+    const mainPosition = {
+      x: MAIN_NODE_X.right,
+      y: rightYPositions[index] ?? INTEGRATION_CANVAS.center.y,
+    };
+
+    return {
+      mainConnectionPoint: getMainConnectionPoint("right", mainPosition),
+      mainPosition,
+      node,
+      subnodePositions: getSubnodePositions("right", mainPosition.y, node.subnodes.length),
+    };
+  });
+
+  return {
+    branches: [...leftBranches, ...rightBranches],
+    center: INTEGRATION_CANVAS.center,
+  };
 }
