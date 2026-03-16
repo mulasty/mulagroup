@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 
 import { INTEGRATION_SCENE_DELAYS } from "./data";
-import { buildCurvedPath, getMainNodePosition, getSubnodePosition, INTEGRATION_CANVAS } from "./layout";
+import { buildCurvedPath, getBranchGeometry, INTEGRATION_CANVAS } from "./layout";
 import { IntegrationArchitectureCanvasNodes } from "./IntegrationArchitectureCanvasNodes";
 import { IntegrationCrossLinkLayer } from "./IntegrationCrossLinkLayer";
 import { IntegrationLineLayer } from "./IntegrationLineLayer";
@@ -23,21 +23,37 @@ export function IntegrationArchitectureCanvas({
 }: IntegrationArchitectureCanvasProps) {
   const renderModel = useMemo(() => {
     const nodeIndex = new Map<string, { x: number; y: number }>();
-    const mainPaths = architecture.primaryNodes.map((node, index) => {
-      const position = getMainNodePosition(node.id);
-      nodeIndex.set(node.id, position);
+    const branches = architecture.primaryNodes.map((node) => ({
+      geometry: getBranchGeometry(node.id, node.subnodes.length),
+      node,
+    }));
+
+    const mainPaths = branches.map(({ geometry, node }, index) => {
+      nodeIndex.set(node.id, geometry.mainPosition);
 
       return {
-        d: buildCurvedPath(INTEGRATION_CANVAS.center, position, 0.12),
+        d: buildCurvedPath(INTEGRATION_CANVAS.center, geometry.mainPosition, 0.12),
         delay: INTEGRATION_SCENE_DELAYS[node.scene] + index * 0.16,
         id: `line-${node.id}`,
         variant: "main" as const,
       };
     });
 
-    const subNodes = architecture.primaryNodes.flatMap((node) =>
+    const mainNodes = branches.map(({ geometry, node }) => ({
+      id: node.id,
+      label: node.label,
+      position: geometry.mainPosition,
+      scene: node.scene,
+    }));
+
+    const subNodes = branches.flatMap(({ geometry, node }) =>
       node.subnodes.map((subnode, index) => {
-        const position = getSubnodePosition(node.id, index);
+        const position = geometry.subnodePositions[index];
+
+        if (!position) {
+          throw new Error(`Missing subnode position for ${node.id}:${String(index)}`);
+        }
+
         nodeIndex.set(subnode.id, position);
 
         return {
@@ -49,13 +65,21 @@ export function IntegrationArchitectureCanvas({
       }),
     );
 
-    const subPaths = architecture.primaryNodes.flatMap((node) =>
-      node.subnodes.map((subnode, index) => ({
-        d: buildCurvedPath(getMainNodePosition(node.id), getSubnodePosition(node.id, index), 0.08),
-        delay: INTEGRATION_SCENE_DELAYS[node.subScene] + index * 0.1,
-        id: `line-${node.id}-${subnode.id}`,
-        variant: "sub" as const,
-      })),
+    const subPaths = branches.flatMap(({ geometry, node }) =>
+      node.subnodes.map((subnode, index) => {
+        const position = geometry.subnodePositions[index];
+
+        if (!position) {
+          throw new Error(`Missing subnode path position for ${node.id}:${String(index)}`);
+        }
+
+        return {
+          d: buildCurvedPath(geometry.mainPosition, position, 0.08),
+          delay: INTEGRATION_SCENE_DELAYS[node.subScene] + index * 0.1,
+          id: `line-${node.id}-${subnode.id}`,
+          variant: "sub" as const,
+        };
+      }),
     );
 
     const crossPaths = architecture.crossLinks
@@ -79,7 +103,8 @@ export function IntegrationArchitectureCanvas({
     return {
       crossPaths,
       mainPaths,
-      mainPoints: architecture.primaryNodes.map((node) => getMainNodePosition(node.id)),
+      mainNodes,
+      mainPoints: branches.map(({ geometry }) => geometry.mainPosition),
       subNodes,
       subPaths,
     };
@@ -139,9 +164,10 @@ export function IntegrationArchitectureCanvas({
       />
       <IntegrationArchitectureCanvasNodes
         animateSequence={animateSequence}
-        architecture={architecture}
+        mainNodes={renderModel.mainNodes}
         revealed={revealed}
         subNodes={renderModel.subNodes}
+        coreLabel={architecture.core.label}
       />
     </svg>
   );

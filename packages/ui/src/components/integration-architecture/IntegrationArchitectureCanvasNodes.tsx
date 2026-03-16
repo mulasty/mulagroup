@@ -1,13 +1,19 @@
 import { INTEGRATION_SCENE_DELAYS } from "./data";
-import { getMainNodePosition, INTEGRATION_CANVAS } from "./layout";
+import { INTEGRATION_CANVAS } from "./layout";
 import { IntegrationCoreNode } from "./IntegrationCoreNode";
 import { IntegrationMainNode } from "./IntegrationMainNode";
 import { IntegrationSubNode } from "./IntegrationSubNode";
-import type { IntegrationArchitectureModel, IntegrationPoint } from "./types";
+import type { IntegrationPoint } from "./types";
 
 type IntegrationArchitectureCanvasNodesProps = {
   animateSequence: boolean;
-  architecture: IntegrationArchitectureModel;
+  coreLabel: string;
+  mainNodes: {
+    id: string;
+    label: string;
+    position: IntegrationPoint;
+    scene: "mainFirst" | "mainSecond";
+  }[];
   revealed: boolean;
   subNodes: {
     delay: number;
@@ -19,7 +25,8 @@ type IntegrationArchitectureCanvasNodesProps = {
 
 export function IntegrationArchitectureCanvasNodes({
   animateSequence,
-  architecture,
+  coreLabel,
+  mainNodes,
   revealed,
   subNodes,
 }: IntegrationArchitectureCanvasNodesProps) {
@@ -28,19 +35,19 @@ export function IntegrationArchitectureCanvasNodes({
       <IntegrationCoreNode
         animateSequence={animateSequence}
         delay={INTEGRATION_SCENE_DELAYS.core}
-        label={architecture.core.label}
+        label={coreLabel}
         position={INTEGRATION_CANVAS.center}
         revealed={revealed}
       />
 
-      {architecture.primaryNodes.map((node) => (
+      {mainNodes.map((node) => (
         <IntegrationMainNode
           animateSequence={animateSequence}
           delay={INTEGRATION_SCENE_DELAYS[node.scene]}
           emphasis={node.id === "sales" || node.id === "ai" || node.id === "reporting"}
           key={node.id}
           label={node.label}
-          position={getMainNodePosition(node.id)}
+          position={node.position}
           revealed={revealed}
         />
       ))}
