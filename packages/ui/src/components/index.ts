@@ -4,6 +4,7 @@ export * from "./Button";
 export * from "./Card";
 export * from "./Checklist";
 export * from "./Container";
+export * from "./data-flow-architecture";
 export * from "./FaqAccordion";
 export * from "./HeadingBlock";
 export * from "./integration-architecture";

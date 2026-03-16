@@ -4,6 +4,7 @@ import {
   PortalAboutSection,
   PortalCapabilitiesSection,
   PortalContactSection,
+  PortalDataFlowArchitectureSection,
   PortalEcosystemSection,
   PortalHeroSection,
   PortalIntegrationArchitectureSection,
@@ -24,6 +25,7 @@ export function PortalHomePage({ site }: PortalHomePageProps) {
       <PortalOperatingModelSection portal={site} />
       <PortalIntegrationArchitectureSection portal={site} />
       <PortalCapabilitiesSection portal={site} />
+      <PortalDataFlowArchitectureSection portal={site} />
       <PortalPartnershipsSection portal={site} />
       <PortalContactSection portal={site} />
     </>

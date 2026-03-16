@@ -1,6 +1,7 @@
 export * from "./PortalAboutSection";
 export * from "./PortalCapabilitiesSection";
 export * from "./PortalContactSection";
+export * from "./PortalDataFlowArchitectureSection";
 export * from "./PortalEcosystemSection";
 export * from "./PortalHeroSection";
 export * from "./PortalIntegrationArchitectureSection";
