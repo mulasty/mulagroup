@@ -28,23 +28,23 @@ const NODE_STYLES = {
   },
   main: {
     accentOpacity: 0.12,
-    fontSize: 12.5,
-    lineHeight: 17,
-    paddingY: 16,
+    fontSize: 12,
+    lineHeight: 16,
+    paddingY: 14,
     radius: 24,
     secondaryFontSize: 10,
     secondaryLineHeight: 12,
-    width: 172,
+    width: 160,
   },
   sub: {
     accentOpacity: 0.08,
-    fontSize: 10,
-    lineHeight: 12,
-    paddingY: 11,
+    fontSize: 9.5,
+    lineHeight: 11,
+    paddingY: 10,
     radius: 18,
-    secondaryFontSize: 9,
-    secondaryLineHeight: 11,
-    width: 122,
+    secondaryFontSize: 8.5,
+    secondaryLineHeight: 10,
+    width: 108,
   },
 } as const;
 
@@ -86,7 +86,7 @@ export function IntegrationNodeBase({
   variant,
 }: IntegrationNodeBaseProps) {
   const styles = NODE_STYLES[variant];
-  const titleLines = wrapLabel(label, variant === "sub" ? 14 : 18);
+  const titleLines = wrapLabel(label, variant === "sub" ? 13 : 17);
   const secondaryLines = secondaryLabel ? wrapLabel(secondaryLabel, variant === "sub" ? 16 : 20) : [];
   const height =
     styles.paddingY * 2 +

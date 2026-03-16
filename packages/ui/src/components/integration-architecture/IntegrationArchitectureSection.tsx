@@ -47,7 +47,7 @@ export function IntegrationArchitectureSection({
         />
 
         <div
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.16),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0.86),rgba(8,15,29,0.96))] px-4 py-6 shadow-[0_36px_120px_-72px_rgba(15,23,42,0.92)] sm:px-6 sm:py-8 lg:px-8 lg:py-10"
+          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.16),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0.86),rgba(8,15,29,0.96))] px-4 py-6 shadow-[0_36px_120px_-72px_rgba(15,23,42,0.92)] sm:px-6 sm:py-8 lg:px-7 lg:py-8"
           ref={sectionRef}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_46%)]" />
@@ -56,7 +56,7 @@ export function IntegrationArchitectureSection({
           </div>
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
 
-          <div className="relative mx-auto max-w-[82rem]">
+          <div className="relative mx-auto max-w-[74rem]">
             <div className="hidden xl:block">
               <IntegrationArchitectureCanvas
                 animateSequence={animateSequence}
