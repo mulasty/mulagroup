@@ -365,7 +365,7 @@ Deliver:
 5. pillar-aware inquiry handling
 6. lead stage model support
 7. future scoring / discovery / follow-up readiness
-8. a system prepared for analytics and AI phases later
+8. a system prepared for localization, content-truth alignment and later analytics / AI phases
 
 ---
 
@@ -388,7 +388,7 @@ Return:
 3. the form and submission architecture added
 4. which pages / forms were connected
 5. any implementation assumptions
-6. what is now ready for the analytics / AI layer
+6. what is now ready for Phase 10.5
 
 Now build only **Phase 10 — Sales, CRM & Lead Operations**.
 

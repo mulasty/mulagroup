@@ -61,8 +61,13 @@ The Mula Group ecosystem must be built in the following order:
 1. **Foundations first**
 2. **Main portal second**
 3. **Pillar websites third**
-4. **Sales, CRM and operations layer fourth**
-5. **AI, automation and dashboards fifth**
+4. **CMS and content operations fourth**
+5. **Sales, CRM and operations layer fifth**
+6. **Localization and content-truth alignment sixth**
+7. **Analytics, dashboards and AI triage seventh**
+8. **Reporting and operating intelligence eighth**
+9. **Trust assets and content engine ninth**
+10. **Retainer and client growth layer tenth**
 
 This means:
 
@@ -455,6 +460,49 @@ Core files:
 
 ---
 
+## Phase 5.5 — Localization and language layer
+
+Goal:
+Add Polish as a first-class language layer across the ecosystem after CMS and sales readiness exist.
+
+Included:
+
+- bilingual architecture
+- locale-aware routing
+- localized UI copy
+- localized content support
+- language switching
+- localized SEO readiness
+
+Core files:
+
+- `Phase 10.5 — Polish Localization & Language Layer.md`
+- `mulagroup_content_system.md`
+- `mulagroup_cms_schema_spec.md`
+
+---
+
+## Phase 5.6 — Pillar content truth alignment
+
+Goal:
+Align portal and pillar content with the real Mula Group offer, service truth and bilingual consistency.
+
+Included:
+
+- service naming alignment
+- CTA truth alignment
+- pillar-by-pillar positioning refinement
+- EN/PL content integrity
+- ecosystem realism improvements
+
+Core files:
+
+- `Phase 10.6 — Pillar Content Alignment & Service Truth Layer.md`
+- pillar blueprints
+- sales framework files
+
+---
+
 ## Phase 6 — Analytics, dashboards and AI
 
 Goal:
@@ -474,6 +522,69 @@ Core files:
 - `mulagroup_dashboard_spec.md`
 - `mulagroup_reporting_framework.md`
 - `mulagroup_ai_triage_prompt_library.md`
+
+---
+
+## Phase 7 — Reporting, automation and operating intelligence
+
+Goal:
+Turn analytics, dashboards and AI outputs into structured reporting rhythm and repeatable operating workflows.
+
+Included:
+
+- weekly and monthly reporting outputs
+- automation hooks
+- signal and alert systems
+- operating intelligence layer
+- human-in-the-loop automation readiness
+
+Core files:
+
+- `Phase 12 — Reporting, Automation & Operating Intelligence.md`
+- `mulagroup_reporting_framework.md`
+- `mulagroup_followup_templates.md`
+
+---
+
+## Phase 8 — Case studies, trust assets and content engine
+
+Goal:
+Build the proof, trust and authority layer on top of the ecosystem.
+
+Included:
+
+- case study system
+- trust asset components
+- insight / article engine
+- internal linking for authority and discovery
+- SEO-ready proof content structure
+
+Core files:
+
+- `Phase 13 — Case Studies, Trust Assets & Content Engine.md`
+- `mulagroup_case_study_framework.md`
+- `mulagroup_content_system.md`
+
+---
+
+## Phase 9 — Retainer, expansion and client growth
+
+Goal:
+Turn successful delivery, trust and ecosystem visibility into repeat work, cross-pillar growth and retainer readiness.
+
+Included:
+
+- retainer-fit logic
+- expansion opportunity tracking
+- account growth visibility
+- cross-pillar client mapping
+- renewal and review rhythm support
+
+Core files:
+
+- `Phase 14 — Retainer, Expansion & Client Growth Layer.md`
+- `mulagroup_retainer_model.md`
+- `mulagroup_client_journey_map.md`
 
 ---
 
@@ -603,7 +714,7 @@ Do not:
 
 ## After that
 
-**Then continue with analytics, reporting and AI layers in documented order**
+**Then continue with Phase 10.5, Phase 10.6, Phase 11, Phase 12, Phase 13 and Phase 14 in documented order**
 
 That is the strongest next sequence after a stable full pillar rollout.
 

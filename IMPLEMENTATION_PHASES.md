@@ -26,5 +26,11 @@ Detailed phase execution docs are located in `/phases`:
 - Phase 8 - Lifestyle Pillar
 - Phase 9 - CMS & Content Backend
 - Phase 10 - Sales, CRM & Lead Operations
+- Phase 10.5 - Polish Localization & Language Layer
+- Phase 10.6 - Pillar Content Alignment & Service Truth Layer
+- Phase 11 - Analytics, Dashboards & AI Triage
+- Phase 12 - Reporting, Automation & Operating Intelligence
+- Phase 13 - Case Studies, Trust Assets & Content Engine
+- Phase 14 - Retainer, Expansion & Client Growth Layer
 
-The analytics, reporting and AI layer is the next planned stage after Phase 10 and is currently documented in `/docs/analytics` and `/docs/ai`.
+Further documented phases after Phase 10.6 currently cover analytics, reporting, automation, trust assets, the content engine and client growth.

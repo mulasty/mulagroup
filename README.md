@@ -34,4 +34,13 @@ Current status:
 - Phase 8 - Lifestyle Pillar: complete, reviewed and stabilized
 - Next recommended implementation step: `Phase 9 - CMS & Content Backend`
 
+Planned follow-on phases after the CMS and sales layers:
+
+- `Phase 10.5 - Polish Localization & Language Layer`
+- `Phase 10.6 - Pillar Content Alignment & Service Truth Layer`
+- `Phase 11 - Analytics, Dashboards & AI Triage`
+- `Phase 12 - Reporting, Automation & Operating Intelligence`
+- `Phase 13 - Case Studies, Trust Assets & Content Engine`
+- `Phase 14 - Retainer, Expansion & Client Growth Layer`
+
 Phased execution remains documented in `IMPLEMENTATION_PHASES.md` and `/phases`.
