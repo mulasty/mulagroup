@@ -5,7 +5,7 @@ import {
   Card,
   Checklist,
   HeadingBlock,
-  InquiryPreviewPanel,
+  InquiryFormPanel,
   Section,
 } from "../../components";
 
@@ -53,7 +53,7 @@ export function PillarContactSection({
           </Card>
         </div>
 
-        <InquiryPreviewPanel formIdPrefix={site.key} hostLabel={hostLabel} inquiry={site.inquiry} />
+        <InquiryFormPanel formIdPrefix={site.key} hostLabel={hostLabel} inquiry={site.inquiry} />
       </div>
     </Section>
   );

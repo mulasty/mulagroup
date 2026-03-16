@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import type { SiteManifest } from "@mulagroup/content-models";
+import { getSharedUiCopy } from "@mulagroup/utils";
 
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -11,13 +12,15 @@ type SiteFrameProps = {
 };
 
 export function SiteFrame({ children, site }: SiteFrameProps) {
+  const copy = getSharedUiCopy(site.locale);
+
   return (
     <div className="relative min-h-screen overflow-x-clip" data-site-theme={site.theme}>
       <a
         className="absolute left-6 top-6 z-50 -translate-y-24 rounded-input bg-white px-4 py-2 text-sm font-medium text-slate-950 focus:translate-y-0"
         href="#content"
       >
-        Skip to content
+        {copy.siteFrame.skipToContent}
       </a>
       <div
         aria-hidden="true"

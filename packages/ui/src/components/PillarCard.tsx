@@ -1,6 +1,6 @@
-import type { PillarCardSummary } from "@mulagroup/content-models";
+import type { AppLocale, PillarCardSummary } from "@mulagroup/content-models";
 
-import { cn } from "@mulagroup/utils";
+import { cn, getSharedUiCopy } from "@mulagroup/utils";
 
 import { Button } from "./Button";
 import { Card } from "./Card";
@@ -8,16 +8,19 @@ import { Card } from "./Card";
 type PillarCardProps = {
   ctaContext?: string;
   ctaLabel?: string;
+  locale?: AppLocale;
   pillar: PillarCardSummary;
   tone?: "dark" | "light";
 };
 
 export function PillarCard({
   ctaContext = "pillar",
-  ctaLabel = "Explore pillar",
+  ctaLabel,
+  locale = "en",
   pillar,
   tone = "dark",
 }: PillarCardProps) {
+  const copy = getSharedUiCopy(locale);
   const isLight = tone === "light";
 
   return (
@@ -75,7 +78,7 @@ export function PillarCard({
         href={pillar.href}
         variant="secondary"
       >
-        {ctaLabel}
+        {ctaLabel ?? copy.portal.explorePillar}
       </Button>
     </Card>
   );

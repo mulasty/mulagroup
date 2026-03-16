@@ -4,15 +4,21 @@ import { Badge, Button, Card, Section } from "../../components";
 
 type PillarHeroSectionProps<THero extends InsightHeroContent = InsightHeroContent> = {
   panelLabel: string;
-  supportingCopy?: string;
+  supportingCopy?: string | undefined;
   site: RichPillarManifest<THero>;
 };
 
 export function PillarHeroSection<THero extends InsightHeroContent = InsightHeroContent>({
   panelLabel,
-  supportingCopy = "Each engagement is designed to connect with the wider ecosystem when the brief needs more than one execution layer.",
+  supportingCopy,
   site,
 }: PillarHeroSectionProps<THero>) {
+  const resolvedSupportingCopy =
+    supportingCopy ??
+    (site.locale === "pl"
+      ? "Każde zaangażowanie jest projektowane tak, aby w razie potrzeby płynnie połączyć się z szerszym ekosystemem, gdy brief wymaga więcej niż jednej warstwy wykonawczej."
+      : "Each engagement is designed to connect with the wider ecosystem when the brief needs more than one execution layer.");
+
   return (
     <Section className="overflow-hidden pt-16 sm:pt-20 lg:pt-24" id="overview">
       <div className="grid gap-10 xl:grid-cols-[minmax(0,0.96fr)_minmax(360px,0.9fr)] xl:items-center">
@@ -72,7 +78,7 @@ export function PillarHeroSection<THero extends InsightHeroContent = InsightHero
                 <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                   {site.summary}
                 </h2>
-                <p className="text-sm leading-7 text-slate-300">{supportingCopy}</p>
+                <p className="text-sm leading-7 text-slate-300">{resolvedSupportingCopy}</p>
               </div>
 
               <div className="grid gap-4">

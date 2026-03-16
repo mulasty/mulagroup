@@ -1,11 +1,12 @@
 import type { PortalManifest } from "@mulagroup/content-models";
+import { getSharedUiCopy } from "@mulagroup/utils";
 
 import {
   Button,
   Card,
   Checklist,
   HeadingBlock,
-  InquiryPreviewPanel,
+  InquiryFormPanel,
   Section,
 } from "../../components";
 
@@ -14,6 +15,8 @@ type PortalContactSectionProps = {
 };
 
 export function PortalContactSection({ portal }: PortalContactSectionProps) {
+  const copy = getSharedUiCopy(portal.locale);
+
   return (
     <Section id="contact" tone="panel">
       <div className="grid gap-10 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
@@ -30,14 +33,14 @@ export function PortalContactSection({ portal }: PortalContactSectionProps) {
           </div>
           <Card className="space-y-5" variant="subtle">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-              Typical starting points
+              {copy.portal.startingPointsLabel}
             </p>
             <Checklist items={portal.finalCta.signals} />
           </Card>
         </div>
-        <InquiryPreviewPanel
+        <InquiryFormPanel
           formIdPrefix="portal"
-          hostLabel="mulagroup.eu"
+          hostLabel={new URL(portal.url).host}
           inquiry={portal.partnershipPrompt}
         />
       </div>

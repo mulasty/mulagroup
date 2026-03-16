@@ -1,9 +1,18 @@
+export type AppLocale = "en" | "pl";
+
 export type CtaLink = {
   href: string;
   label: string;
 };
 
 export type NavigationItem = CtaLink;
+
+export type LocaleLink = {
+  active: boolean;
+  href: string;
+  label: string;
+  locale: AppLocale;
+};
 
 export type SectionLead = {
   description: string;
@@ -122,6 +131,32 @@ export type InquiryPreview = {
   title: string;
 };
 
+export type InquiryFormField = {
+  label: string;
+  name: string;
+  options?: SelectOption[];
+  placeholder?: string;
+  required: boolean;
+  type: "checkbox" | "email" | "phone" | "select" | "text" | "textarea";
+  validationRule?: string;
+};
+
+export type InquiryFormConfig = {
+  description: string;
+  endpoint: string;
+  errorMessage: string;
+  fields: InquiryFormField[];
+  formId: string;
+  locale: AppLocale;
+  note: string;
+  siteKey: SiteKey;
+  slug: string;
+  submitLabel: string;
+  successMessage: string;
+  title: string;
+  trackingName: string;
+};
+
 export type PillarKey = "strategy" | "digital" | "commerce" | "industry" | "projects" | "lifestyle";
 
 export type SiteKey = "portal" | PillarKey;
@@ -145,7 +180,10 @@ export type IntegrationCard = {
 export type BaseSiteManifest = {
   headerCta: CtaLink;
   hero: HeroContent;
+  homeHref: string;
   key: SiteKey;
+  locale: AppLocale;
+  localeLinks: LocaleLink[];
   name: string;
   navigation: NavigationItem[];
   seo?: SeoContent;
@@ -165,7 +203,7 @@ export type PortalManifest = Omit<BaseSiteManifest, "hero" | "type"> & {
   hero: PortalHeroContent;
   operatingModelIntro: SectionLead;
   operatingModel: ProcessStep[];
-  partnershipPrompt: InquiryPreview;
+  partnershipPrompt: InquiryFormConfig;
   partnerships: PortalPartnershipSection;
   pillars: PillarCardSummary[];
   stats: StatItem[];
@@ -174,7 +212,7 @@ export type PortalManifest = Omit<BaseSiteManifest, "hero" | "type"> & {
 
 export type PillarManifest = BaseSiteManifest & {
   accentLabel: string;
-  inquiry: InquiryPreview;
+  inquiry: InquiryFormConfig;
   integrations: IntegrationCard[];
   process: ProcessStep[];
   services: TaggedFeatureCard[];

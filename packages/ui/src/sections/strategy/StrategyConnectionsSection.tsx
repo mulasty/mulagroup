@@ -7,12 +7,20 @@ import { getPillarCards } from "@mulagroup/utils";
 import { Card, HeadingBlock, PillarCard, Section } from "../../components";
 
 type StrategyConnectionsSectionProps = {
+  flowLabel: string;
+  routesLabel: string;
   site: StrategyManifest;
 };
 
-export function StrategyConnectionsSection({ site }: StrategyConnectionsSectionProps) {
+export function StrategyConnectionsSection({
+  flowLabel,
+  routesLabel,
+  site,
+}: StrategyConnectionsSectionProps) {
   const pillarCardsByKey = new Map(
-    getPillarCards().map((pillar) => [pillar.key, pillar] satisfies [string, PillarCardSummary]),
+    getPillarCards(site.locale).map(
+      (pillar) => [pillar.key, pillar] satisfies [string, PillarCardSummary],
+    ),
   );
   const connectedPillars = site.integrations
     .map((integration) => pillarCardsByKey.get(integration.pillar))
@@ -31,11 +39,11 @@ export function StrategyConnectionsSection({ site }: StrategyConnectionsSectionP
 
           <Card className="space-y-4" variant="light">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-              Typical activation routes
+              {routesLabel}
             </p>
             <div className="rounded-card border border-slate-200 bg-slate-50 px-4 py-4">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-                Ecosystem flow
+                {flowLabel}
               </p>
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center rounded-full bg-[color:var(--brand-accent-soft)] px-3 py-1 text-xs font-semibold text-[color:var(--brand-accent)]">
@@ -74,6 +82,7 @@ export function StrategyConnectionsSection({ site }: StrategyConnectionsSectionP
             <PillarCard
               ctaContext="strategy-connection"
               key={pillar.key}
+              locale={site.locale}
               pillar={pillar}
               tone="light"
             />

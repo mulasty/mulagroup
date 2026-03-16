@@ -1,8 +1,10 @@
-import { DigitalHomePage } from "@mulagroup/ui/pages";
-import { getDigitalManifest } from "@mulagroup/utils";
+import { DEFAULT_LOCALE, buildLocaleRedirectPath } from "@mulagroup/utils";
+import { redirect } from "next/navigation";
 
-const site = getDigitalManifest();
+type RootPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
 
-export default function Page() {
-  return <DigitalHomePage site={site} />;
+export default async function Page({ searchParams }: RootPageProps) {
+  redirect(buildLocaleRedirectPath(DEFAULT_LOCALE, await searchParams));
 }

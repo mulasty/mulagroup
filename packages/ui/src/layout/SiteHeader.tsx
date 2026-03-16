@@ -1,7 +1,7 @@
 "use client";
 
 import type { SiteManifest } from "@mulagroup/content-models";
-import { cn } from "@mulagroup/utils";
+import { cn, getSharedUiCopy } from "@mulagroup/utils";
 import { useEffect, useId, useRef, useState } from "react";
 
 import { BrandLogo } from "../components/BrandLogo";
@@ -13,8 +13,10 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ site }: SiteHeaderProps) {
+  const copy = getSharedUiCopy(site.locale);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [locationSuffix, setLocationSuffix] = useState("");
   const mobileMenuId = useId();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -31,6 +33,21 @@ export function SiteHeader({ site }: SiteHeaderProps) {
 
     return () => {
       window.removeEventListener("scroll", syncScrolledState);
+    };
+  }, []);
+
+  useEffect(() => {
+    const syncLocationSuffix = () => {
+      setLocationSuffix(`${window.location.search}${window.location.hash}`);
+    };
+
+    syncLocationSuffix();
+    window.addEventListener("hashchange", syncLocationSuffix);
+    window.addEventListener("popstate", syncLocationSuffix);
+
+    return () => {
+      window.removeEventListener("hashchange", syncLocationSuffix);
+      window.removeEventListener("popstate", syncLocationSuffix);
     };
   }, []);
 
@@ -67,6 +84,9 @@ export function SiteHeader({ site }: SiteHeaderProps) {
     setIsMenuOpen(false);
   };
 
+  const buildLocaleSwitchHref = (href: string) =>
+    locationSuffix.length > 0 ? `${href}${locationSuffix}` : href;
+
   return (
     <header
       className={cn(
@@ -77,18 +97,20 @@ export function SiteHeader({ site }: SiteHeaderProps) {
       )}
     >
       <Container className="flex min-h-20 items-center justify-between gap-6">
-        <a className="flex min-w-0 items-center gap-3" href="/">
+        <a className="flex min-w-0 items-center gap-3" href={site.homeHref}>
           <BrandLogo className="shrink-0 scale-[1.6] transform-gpu" size="sm" variant="white" />
           <span className="min-w-0">
             <span className="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-              {site.type === "portal" ? "Integrated business ecosystem" : `${site.name} pillar`}
+              {site.type === "portal"
+                ? copy.header.integratedBusinessEcosystem
+                : `${site.name} ${copy.header.pillarSuffix}`}
             </span>
             <span className="block truncate text-lg font-semibold tracking-tight text-white">
-              {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
+              {site.name}
             </span>
           </span>
         </a>
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label={copy.header.navigation} className="hidden items-center gap-7 lg:flex">
           {site.navigation.map((item) => (
             <a
               className="text-sm text-slate-300 hover:text-white"
@@ -99,7 +121,27 @@ export function SiteHeader({ site }: SiteHeaderProps) {
             </a>
           ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
+            {site.localeLinks.map((localeLink) => (
+              <a
+                aria-current={localeLink.active ? "page" : undefined}
+                aria-label={`${copy.header.language}: ${localeLink.label}`}
+                className={cn(
+                  "rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition",
+                  localeLink.active
+                    ? "bg-white text-slate-950"
+                    : "text-slate-300 hover:text-white",
+                )}
+                href={buildLocaleSwitchHref(localeLink.href)}
+                hrefLang={localeLink.locale}
+                key={localeLink.locale}
+                lang={localeLink.locale}
+              >
+                {localeLink.label}
+              </a>
+            ))}
+          </div>
           <Button href={site.headerCta.href} size="sm" variant="primary">
             {site.headerCta.label}
           </Button>
@@ -108,7 +150,9 @@ export function SiteHeader({ site }: SiteHeaderProps) {
           <button
             aria-controls={mobileMenuId}
             aria-expanded={isMenuOpen}
-            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              isMenuOpen ? copy.header.closeNavigationMenu : copy.header.openNavigationMenu
+            }
             className="rounded-input border border-white/10 bg-white/6 px-4 py-3 text-sm font-medium text-slate-100"
             onClick={() => {
               setIsMenuOpen((currentState) => !currentState);
@@ -116,20 +160,20 @@ export function SiteHeader({ site }: SiteHeaderProps) {
             ref={menuButtonRef}
             type="button"
           >
-            {isMenuOpen ? "Close" : "Menu"}
+            {isMenuOpen ? copy.header.close : copy.header.menu}
           </button>
         </div>
       </Container>
       {isMenuOpen ? (
         <div className="lg:hidden">
           <button
-            aria-label="Close menu overlay"
+            aria-label={copy.header.closeMenuOverlay}
             className="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-sm"
             onClick={closeMenu}
             type="button"
           />
           <div
-            aria-label="Mobile navigation"
+            aria-label={copy.header.navigation}
             aria-modal="true"
             className="surface-panel fixed inset-x-4 top-24 z-50 rounded-card p-4 shadow-[var(--shadow-soft)]"
             id={mobileMenuId}
@@ -144,11 +188,9 @@ export function SiteHeader({ site }: SiteHeaderProps) {
                 />
                 <div className="space-y-1">
                   <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-slate-500">
-                    Navigation
+                    {copy.header.navigation}
                   </span>
-                  <p className="truncate text-sm font-medium text-white">
-                    {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
-                  </p>
+                  <p className="truncate text-sm font-medium text-white">{site.name}</p>
                 </div>
               </div>
               <button
@@ -156,10 +198,10 @@ export function SiteHeader({ site }: SiteHeaderProps) {
                 onClick={closeMenu}
                 type="button"
               >
-                Close
+                {copy.header.close}
               </button>
             </div>
-            <nav aria-label="Mobile primary" className="flex flex-col gap-2">
+            <nav aria-label={copy.header.navigation} className="flex flex-col gap-2">
               {site.navigation.map((item, index) => (
                 <a
                   className="rounded-input px-3 py-2 text-sm text-slate-200 hover:bg-white/6 hover:text-white"
@@ -171,6 +213,27 @@ export function SiteHeader({ site }: SiteHeaderProps) {
                   {item.label}
                 </a>
               ))}
+              <div className="mt-2 flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1">
+                {site.localeLinks.map((localeLink) => (
+                  <a
+                    aria-current={localeLink.active ? "page" : undefined}
+                    aria-label={`${copy.header.language}: ${localeLink.label}`}
+                    className={cn(
+                      "flex-1 rounded-full px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.18em] transition",
+                      localeLink.active
+                        ? "bg-white text-slate-950"
+                        : "text-slate-300 hover:text-white",
+                    )}
+                    href={buildLocaleSwitchHref(localeLink.href)}
+                    hrefLang={localeLink.locale}
+                    key={localeLink.locale}
+                    lang={localeLink.locale}
+                    onClick={closeMenu}
+                  >
+                    {localeLink.label}
+                  </a>
+                ))}
+              </div>
               <Button
                 className="mt-2 w-full"
                 href={site.headerCta.href}

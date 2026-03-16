@@ -3,10 +3,11 @@ import type { StrategyManifest } from "@mulagroup/content-models";
 import { Card, HeadingBlock, Section } from "../../components";
 
 type StrategyServicesSectionProps = {
+  bestForLabel: string;
   site: StrategyManifest;
 };
 
-export function StrategyServicesSection({ site }: StrategyServicesSectionProps) {
+export function StrategyServicesSection({ bestForLabel, site }: StrategyServicesSectionProps) {
   return (
     <Section id="services" tone="light">
       <HeadingBlock
@@ -28,7 +29,7 @@ export function StrategyServicesSection({ site }: StrategyServicesSectionProps) 
             {service.bestFor ? (
               <div className="rounded-card border border-slate-200 bg-slate-50 px-4 py-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-                  Best for
+                  {bestForLabel}
                 </p>
                 <p className="mt-2 text-sm leading-7 text-slate-600">{service.bestFor}</p>
               </div>

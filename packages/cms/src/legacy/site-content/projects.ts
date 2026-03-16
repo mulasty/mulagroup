@@ -1,5 +1,3 @@
-import type { ProjectsManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const projectsManifest = {
@@ -455,7 +453,7 @@ export const projectsManifest = {
   inquiry: {
     title: "Tell us what kind of project needs stronger structure",
     description:
-      "Share the site, idea or initiative that needs a clearer development pathway. This intake preview reflects the first information we usually ask for before the conversation.",
+      "Share the site, idea or initiative that needs a clearer development pathway. We use this intake to understand the concept before the first project conversation.",
     fields: {
       ...sharedInquiryFields,
       companyLabel: "Company / Project",
@@ -470,7 +468,7 @@ export const projectsManifest = {
         { value: "multi-domain", label: "Multi-domain project" },
       ],
     },
-    buttonLabel: "Initial project conversation context",
-    note: "Use the conversation buttons on the left to reach us directly and include the same core context shown in this intake preview.",
+    buttonLabel: "Send projects inquiry",
+    note: "The inquiry captures project context, likely supporting pillars and the most sensible first structuring step.",
   },
-} satisfies ProjectsManifest;
+};

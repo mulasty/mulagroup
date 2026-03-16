@@ -1,5 +1,10 @@
-import { PortalHomePage } from "@mulagroup/ui/pages";
+import { DEFAULT_LOCALE, buildLocaleRedirectPath } from "@mulagroup/utils";
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  return <PortalHomePage />;
+type RootPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function Page({ searchParams }: RootPageProps) {
+  redirect(buildLocaleRedirectPath(DEFAULT_LOCALE, await searchParams));
 }

@@ -5,15 +5,16 @@ import {
   Card,
   Checklist,
   HeadingBlock,
-  InquiryPreviewPanel,
+  InquiryFormPanel,
   Section,
 } from "../../components";
 
 type StrategyContactSectionProps = {
+  signalsLabel: string;
   site: StrategyManifest;
 };
 
-export function StrategyContactSection({ site }: StrategyContactSectionProps) {
+export function StrategyContactSection({ signalsLabel, site }: StrategyContactSectionProps) {
   return (
     <Section id="contact" tone="panel">
       <div className="grid gap-10 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
@@ -39,14 +40,14 @@ export function StrategyContactSection({ site }: StrategyContactSectionProps) {
           </div>
           <Card className="space-y-5" variant="subtle">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-              Good moment to start
+              {signalsLabel}
             </p>
             <Checklist items={site.finalCta.signals} />
           </Card>
         </div>
-        <InquiryPreviewPanel
+        <InquiryFormPanel
           formIdPrefix="strategy"
-          hostLabel="strategy.mulagroup.eu"
+          hostLabel={new URL(site.url).host}
           inquiry={site.inquiry}
         />
       </div>

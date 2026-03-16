@@ -56,7 +56,7 @@ export function PortalHeroSection({ portal }: PortalHeroSectionProps) {
           />
           <div className="relative flex w-full flex-col items-center justify-center gap-5 text-center">
             <InteractiveBrandLogo
-              alt="Mula Group white emblem"
+              alt={portal.locale === "pl" ? "Białe godło Mula Group" : "Mula Group white emblem"}
               baseScale={1.8}
               className="h-56 w-56 drop-shadow-[0_24px_80px_rgba(15,23,42,0.52)] sm:h-72 sm:w-72 lg:h-[24rem] lg:w-[24rem] xl:h-[28rem] xl:w-[28rem]"
               variant="white"

@@ -3,10 +3,16 @@ import type { StrategyManifest } from "@mulagroup/content-models";
 import { Badge, Button, Card, Section } from "../../components";
 
 type StrategyHeroSectionProps = {
+  panelBadgeLabel: string;
+  panelTitle: string;
   site: StrategyManifest;
 };
 
-export function StrategyHeroSection({ site }: StrategyHeroSectionProps) {
+export function StrategyHeroSection({
+  panelBadgeLabel,
+  panelTitle,
+  site,
+}: StrategyHeroSectionProps) {
   return (
     <Section className="overflow-hidden pt-16 sm:pt-20 lg:pt-24" id="overview">
       <div className="grid gap-10 xl:grid-cols-[minmax(0,0.96fr)_minmax(360px,0.9fr)] xl:items-center">
@@ -56,11 +62,11 @@ export function StrategyHeroSection({ site }: StrategyHeroSectionProps) {
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center gap-3">
-                  <Badge variant="neutral">Strategy entry point</Badge>
+                  <Badge variant="neutral">{panelBadgeLabel}</Badge>
                   <span className="text-sm text-slate-400">{site.tagline}</span>
                 </div>
                 <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                  Architecture for growth, transformation and complex initiatives.
+                  {panelTitle}
                 </h2>
                 <p className="text-sm leading-7 text-slate-300">{site.summary}</p>
               </div>

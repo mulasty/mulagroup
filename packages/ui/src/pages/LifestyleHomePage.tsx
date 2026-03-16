@@ -1,4 +1,5 @@
 import type { LifestyleManifest } from "@mulagroup/content-models";
+import { getSiteChrome, getSharedUiCopy } from "@mulagroup/utils";
 
 import {
   PillarAudienceSection,
@@ -18,36 +19,51 @@ type LifestyleHomePageProps = {
 };
 
 export function LifestyleHomePage({ site }: LifestyleHomePageProps) {
+  const chrome = getSiteChrome("lifestyle", site.locale);
+  const copy = getSharedUiCopy(site.locale);
+
   return (
     <>
       <PillarHeroSection
-        panelLabel="Premium experience layer"
+        panelLabel={chrome.heroPanelLabel ?? ""}
         site={site}
-        supportingCopy="Lifestyle is strongest when perception, experience and premium direction are designed with enough structure to support growth, partnerships and real execution."
+        supportingCopy={chrome.heroSupportingCopy}
       />
-      <PillarIntroSection
-        principlesLabel="What a stronger premium experience layer should do"
-        section={site.intro}
-      />
-      <PillarServicesSection id="services" lead={site.servicesIntro} services={site.services} />
+      <PillarIntroSection principlesLabel={chrome.introPrinciplesLabel} section={site.intro} />
       <PillarServicesSection
-        bestForLabel="Best fit"
+        bestForLabel={chrome.bestForLabel}
+        id="services"
+        lead={site.servicesIntro}
+        services={site.services}
+      />
+      <PillarServicesSection
+        bestForLabel={chrome.bestForLabel}
         id="experience-types"
         lead={site.experienceTypesIntro}
         services={site.experienceTypes}
         tone="panel"
       />
-      <PillarAudienceSection audiences={site.audiences} lead={site.audiencesIntro} />
+      <PillarAudienceSection
+        audiences={site.audiences}
+        lead={site.audiencesIntro}
+        signalsLabel={copy.shared.typicalSignals}
+      />
       <PillarProcessSection id="process" lead={site.processIntro} steps={site.process} />
       <PillarFormatsSection formats={site.formats} lead={site.formatsIntro} />
       <PillarDifferentiatorsSection items={site.differentiators} lead={site.differentiatorsIntro} />
-      <PillarConnectionsSection currentLabel="Lifestyle" leadingLabels={["Strategy"]} site={site} />
+      <PillarConnectionsSection
+        currentLabel={site.name}
+        flowLabel={chrome.connectionsFlowLabel}
+        leadingLabels={["Strategy"]}
+        routesLabel={chrome.connectionsRoutesLabel}
+        site={site}
+      />
       <PillarFaqSection faqs={site.faqs} lead={site.faqsIntro} />
       <PillarContactSection
         contactContext="lifestyle-contact"
-        hostLabel="lifestyle.mulagroup.eu"
+        hostLabel={new URL(site.url).host}
         site={site}
-        startSignalsLabel="Typical starting situations"
+        startSignalsLabel={chrome.contactSignalsLabel}
       />
     </>
   );

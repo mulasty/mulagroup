@@ -1,4 +1,5 @@
 import type { StrategyManifest } from "@mulagroup/content-models";
+import { getSiteChrome, getSharedUiCopy } from "@mulagroup/utils";
 
 import {
   StrategyAudienceSection,
@@ -18,18 +19,29 @@ type StrategyHomePageProps = {
 };
 
 export function StrategyHomePage({ site }: StrategyHomePageProps) {
+  const chrome = getSiteChrome("strategy", site.locale);
+  const copy = getSharedUiCopy(site.locale);
+
   return (
     <>
-      <StrategyHeroSection site={site} />
-      <StrategyIntroSection site={site} />
-      <StrategyServicesSection site={site} />
-      <StrategyAudienceSection site={site} />
+      <StrategyHeroSection
+        panelBadgeLabel={chrome.heroBadgeLabel ?? ""}
+        panelTitle={chrome.heroPanelTitle ?? ""}
+        site={site}
+      />
+      <StrategyIntroSection principlesLabel={chrome.introPrinciplesLabel} site={site} />
+      <StrategyServicesSection bestForLabel={chrome.bestForLabel} site={site} />
+      <StrategyAudienceSection signalsLabel={copy.shared.typicalSignals} site={site} />
       <StrategyProcessSection site={site} />
       <StrategyFormatsSection site={site} />
       <StrategyDifferentiatorsSection site={site} />
-      <StrategyConnectionsSection site={site} />
+      <StrategyConnectionsSection
+        flowLabel={chrome.connectionsFlowLabel}
+        routesLabel={chrome.connectionsRoutesLabel}
+        site={site}
+      />
       <StrategyFaqSection site={site} />
-      <StrategyContactSection site={site} />
+      <StrategyContactSection signalsLabel={chrome.contactSignalsLabel} site={site} />
     </>
   );
 }

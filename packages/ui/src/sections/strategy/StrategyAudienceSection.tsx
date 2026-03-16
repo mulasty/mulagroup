@@ -3,10 +3,11 @@ import type { StrategyManifest } from "@mulagroup/content-models";
 import { Card, Checklist, HeadingBlock, Section } from "../../components";
 
 type StrategyAudienceSectionProps = {
+  signalsLabel: string;
   site: StrategyManifest;
 };
 
-export function StrategyAudienceSection({ site }: StrategyAudienceSectionProps) {
+export function StrategyAudienceSection({ signalsLabel, site }: StrategyAudienceSectionProps) {
   return (
     <Section id="fit">
       <HeadingBlock
@@ -24,7 +25,7 @@ export function StrategyAudienceSection({ site }: StrategyAudienceSectionProps) 
             </div>
             <div className="mt-auto space-y-4">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-                Typical signals
+                {signalsLabel}
               </p>
               <Checklist items={audience.signals} />
             </div>

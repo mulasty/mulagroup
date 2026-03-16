@@ -1,5 +1,3 @@
-import type { LifestyleManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const lifestyleManifest = {
@@ -457,7 +455,7 @@ export const lifestyleManifest = {
   inquiry: {
     title: "Tell us about the premium concept, experience or venture you want to shape",
     description:
-      "Share the idea, audience or initiative that needs a more refined premium direction. This intake preview reflects the first information we usually ask for before the conversation.",
+      "Share the idea, audience or initiative that needs a more refined premium direction. We use this intake to understand the concept before the first lifestyle conversation.",
     fields: {
       ...sharedInquiryFields,
       companyLabel: "Company / Project",
@@ -472,7 +470,7 @@ export const lifestyleManifest = {
         { value: "multi-domain", label: "Multi-domain premium project" },
       ],
     },
-    buttonLabel: "Intake preview",
-    note: "Use the conversation buttons here to reach us directly and include the same core context shown in this intake preview.",
+    buttonLabel: "Send lifestyle inquiry",
+    note: "The inquiry keeps the premium concept, audience context and likely next step together before discovery.",
   },
-} satisfies LifestyleManifest;
+};

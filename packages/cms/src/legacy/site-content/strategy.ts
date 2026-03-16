@@ -1,5 +1,3 @@
-import type { StrategyManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const strategyManifest = {
@@ -400,7 +398,7 @@ export const strategyManifest = {
   inquiry: {
     title: "Tell us where the challenge sits today",
     description:
-      "Share the business, project or transformation context that needs structure. For now, the fastest route is a direct conversation, and this preview shows the information we normally ask for first.",
+      "Share the business, project or transformation context that needs structure. We use this intake to understand the situation before the first strategic conversation.",
     fields: {
       ...sharedInquiryFields,
       companyLabel: "Company / Project",
@@ -415,7 +413,7 @@ export const strategyManifest = {
         { value: "multi-domain-challenge", label: "Multi-domain challenge" },
       ],
     },
-    buttonLabel: "Initial conversation context",
-    note: "Use the conversation buttons on the left to reach us directly and include the same core context shown in this intake preview.",
+    buttonLabel: "Send strategic inquiry",
+    note: "This structured intake helps route the inquiry into the right strategic next step while preserving the full project context.",
   },
-} satisfies StrategyManifest;
+};

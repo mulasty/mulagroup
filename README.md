@@ -32,11 +32,13 @@ Current status:
 - Phase 6 - Industry Pillar: complete, reviewed and stabilized
 - Phase 7 - Projects Pillar: complete, reviewed and stabilized
 - Phase 8 - Lifestyle Pillar: complete, reviewed and stabilized
-- Next recommended implementation step: `Phase 9 - CMS & Content Backend`
+- Phase 9 - CMS & Content Backend: complete and technically stable
+- Phase 10 - Sales, CRM & Lead Operations: complete and technically stable
+- Phase 10.5 - Polish Localization & Language Layer: complete and technically stable
+- Next recommended implementation step: `Phase 10.6 - Pillar Content Alignment & Service Truth Layer`
 
-Planned follow-on phases after the CMS and sales layers:
+Planned follow-on phases after the CMS, sales and localization layers:
 
-- `Phase 10.5 - Polish Localization & Language Layer`
 - `Phase 10.6 - Pillar Content Alignment & Service Truth Layer`
 - `Phase 11 - Analytics, Dashboards & AI Triage`
 - `Phase 12 - Reporting, Automation & Operating Intelligence`

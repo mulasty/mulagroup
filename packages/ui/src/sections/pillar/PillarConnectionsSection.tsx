@@ -8,17 +8,23 @@ import { Card, HeadingBlock, PillarCard, Section } from "../../components";
 
 type PillarConnectionsSectionProps = {
   currentLabel: string;
+  flowLabel: string;
   leadingLabels?: string[];
+  routesLabel: string;
   site: RichPillarManifest;
 };
 
 export function PillarConnectionsSection({
   currentLabel,
+  flowLabel,
   leadingLabels = [],
+  routesLabel,
   site,
 }: PillarConnectionsSectionProps) {
   const pillarCardsByKey = new Map(
-    getPillarCards().map((pillar) => [pillar.key, pillar] satisfies [PillarKey, PillarCardSummary]),
+    getPillarCards(site.locale).map(
+      (pillar) => [pillar.key, pillar] satisfies [PillarKey, PillarCardSummary],
+    ),
   );
   const connectedPillars = site.integrations
     .map((integration) => pillarCardsByKey.get(integration.pillar))
@@ -44,11 +50,11 @@ export function PillarConnectionsSection({
 
           <Card className="space-y-4" variant="light">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-              Typical ecosystem routes
+              {routesLabel}
             </p>
             <div className="rounded-card border border-slate-200 bg-slate-50 px-4 py-4">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-                Ecosystem flow
+                {flowLabel}
               </p>
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 {flowLabels.map((label, index) => (
@@ -92,6 +98,7 @@ export function PillarConnectionsSection({
             <PillarCard
               ctaContext={`${site.key}-connection`}
               key={pillar.key}
+              locale={site.locale}
               pillar={pillar}
               tone="light"
             />

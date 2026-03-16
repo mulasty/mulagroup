@@ -1,4 +1,5 @@
-import type { InquiryPreview } from "@mulagroup/content-models";
+import type { AppLocale, InquiryPreview } from "@mulagroup/content-models";
+import { getSharedUiCopy } from "@mulagroup/utils";
 
 import { Card } from "./Card";
 import { Input } from "./Input";
@@ -11,6 +12,7 @@ type InquiryPreviewPanelProps = {
   formIdPrefix: string;
   hostLabel: string;
   inquiry: InquiryPreview;
+  locale?: AppLocale;
 };
 
 export function InquiryPreviewPanel({
@@ -18,7 +20,10 @@ export function InquiryPreviewPanel({
   formIdPrefix,
   hostLabel,
   inquiry,
+  locale = "en",
 }: InquiryPreviewPanelProps) {
+  const copy = getSharedUiCopy(locale);
+
   return (
     <Card>
       <div className="space-y-6">
@@ -59,7 +64,7 @@ export function InquiryPreviewPanel({
                   {inquiry.fields.inquiryTypeLabel}
                 </Label>
                 <Select defaultValue="" id={`${formIdPrefix}-inquiry-type`}>
-                  <option value="">Select the closest fit</option>
+                  <option value="">{copy.forms.selectPlaceholder}</option>
                   {inquiry.fields.inquiryTypeOptions.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}

@@ -4,13 +4,14 @@ import {
   Button,
   Card,
   HeadingBlock,
-  Input,
-  Label,
+  InquiryFormPanel,
   Section,
-  Textarea
 } from "../components";
 
 export function PillarHomePage({ site }: { site: PillarManifest }) {
+  const hostLabel = new URL(site.url).host;
+  const isPolish = site.locale === "pl";
+
   return (
     <>
       <Section className="pt-16 sm:pt-20 lg:pt-24" id="overview">
@@ -38,7 +39,9 @@ export function PillarHomePage({ site }: { site: PillarManifest }) {
           </div>
           <Card className="space-y-6">
             <div className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Core focus</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+                {isPolish ? "Główny fokus" : "Core focus"}
+              </p>
               <h2 className="text-2xl font-semibold tracking-tight text-white">{site.tagline}</h2>
               <p className="text-sm leading-7 text-slate-300">{site.summary}</p>
             </div>
@@ -55,9 +58,15 @@ export function PillarHomePage({ site }: { site: PillarManifest }) {
 
       <Section id="services" tone="panel">
         <HeadingBlock
-          description="Each pillar stays focused, but it remains designed to plug into the wider Mula Group system when the brief requires more than one capability."
-          eyebrow="Capability areas"
-          title={`What ${site.name} activates`}
+          description={
+            isPolish
+              ? "Każdy filar pozostaje wyspecjalizowany, ale jest projektowany tak, by łączyć się z szerszym systemem Mula Group, gdy sytuacja wymaga więcej niż jednej kompetencji."
+              : "Each pillar stays focused, but it remains designed to plug into the wider Mula Group system when the brief requires more than one capability."
+          }
+          eyebrow={isPolish ? "Obszary kompetencji" : "Capability areas"}
+          title={
+            isPolish ? `Co aktywuje ${site.name}` : `What ${site.name} activates`
+          }
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {site.services.map((service) => (
@@ -80,9 +89,17 @@ export function PillarHomePage({ site }: { site: PillarManifest }) {
 
       <Section id="process" tone="light">
         <HeadingBlock
-          description="A calm, structured process that starts with understanding and ends with a clearer execution route."
-          eyebrow="Operating sequence"
-          title="How this pillar works inside the ecosystem"
+          description={
+            isPolish
+              ? "Spokojny, uporządkowany proces, który zaczyna się od zrozumienia kontekstu i kończy czytelniejszą ścieżką wykonania."
+              : "A calm, structured process that starts with understanding and ends with a clearer execution route."
+          }
+          eyebrow={isPolish ? "Sekwencja operacyjna" : "Operating sequence"}
+          title={
+            isPolish
+              ? "Jak ten filar działa wewnątrz ekosystemu"
+              : "How this pillar works inside the ecosystem"
+          }
           tone="light"
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -99,9 +116,17 @@ export function PillarHomePage({ site }: { site: PillarManifest }) {
       <Section id="connections">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
           <HeadingBlock
-            description="The pillar is intentionally strong on its own, but it is designed to cross-link into the ecosystem when the opportunity becomes multi-layered."
-            eyebrow="Cross-pillar leverage"
-            title="Built to connect with the rest of the system"
+            description={
+              isPolish
+                ? "Filar ma być mocny samodzielnie, ale od początku jest projektowany tak, by łączyć się z resztą ekosystemu, kiedy szansa staje się wielowarstwowa."
+                : "The pillar is intentionally strong on its own, but it is designed to cross-link into the ecosystem when the opportunity becomes multi-layered."
+            }
+            eyebrow={isPolish ? "Dźwignia cross-pillar" : "Cross-pillar leverage"}
+            title={
+              isPolish
+                ? "Zaprojektowany do łączenia się z resztą systemu"
+                : "Built to connect with the rest of the system"
+            }
           />
           <div className="grid gap-6">
             {site.integrations.map((integration) => (
@@ -114,7 +139,7 @@ export function PillarHomePage({ site }: { site: PillarManifest }) {
                 </div>
                 <p className="text-sm leading-7 text-slate-300">{integration.description}</p>
                 <Button className="self-start" href={integration.href} variant="secondary">
-                  Open related pillar
+                  {isPolish ? "Otwórz powiązany filar" : "Open related pillar"}
                 </Button>
               </Card>
             ))}
@@ -126,29 +151,10 @@ export function PillarHomePage({ site }: { site: PillarManifest }) {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
           <HeadingBlock
             description={site.inquiry.description}
-            eyebrow="Inquiry architecture"
+            eyebrow={isPolish ? "Architektura zapytania" : "Inquiry architecture"}
             title={site.inquiry.title}
           />
-          <Card>
-            <form className="space-y-5">
-              <div>
-                <Label htmlFor={`${site.key}-name`}>{site.inquiry.fields.nameLabel}</Label>
-                <Input id={`${site.key}-name`} placeholder={site.inquiry.fields.namePlaceholder} />
-              </div>
-              <div>
-                <Label htmlFor={`${site.key}-email`}>{site.inquiry.fields.emailLabel}</Label>
-                <Input id={`${site.key}-email`} placeholder={site.inquiry.fields.emailPlaceholder} type="email" />
-              </div>
-              <div>
-                <Label htmlFor={`${site.key}-message`}>{site.inquiry.fields.messageLabel}</Label>
-                <Textarea id={`${site.key}-message`} placeholder={site.inquiry.fields.messagePlaceholder} />
-              </div>
-              <Button disabled type="button">
-                {site.inquiry.buttonLabel}
-              </Button>
-              <p className="text-sm leading-7 text-slate-400">{site.inquiry.note}</p>
-            </form>
-          </Card>
+          <InquiryFormPanel formIdPrefix={site.key} hostLabel={hostLabel} inquiry={site.inquiry} />
         </div>
       </Section>
     </>

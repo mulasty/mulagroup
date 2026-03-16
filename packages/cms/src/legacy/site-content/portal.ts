@@ -1,5 +1,3 @@
-import type { PortalManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const portalManifest = {
@@ -8,9 +6,9 @@ export const portalManifest = {
   name: "Mula Group",
   theme: "portal",
   url: "https://mulagroup.eu",
-  tagline: "Where strategy, technology and execution connect.",
+  tagline: "Where strategic clarity, systems and execution connect.",
   summary:
-    "Mula Group is a multidisciplinary ecosystem that connects strategy, AI, digital systems, commerce, industry and project execution into one structured model for modern business growth.",
+    "Mula Group connects strategic direction, digital systems, commercial growth, technical capability and project development into one structured ecosystem for companies, ventures and complex initiatives.",
   navigation: [
     { href: "#about", label: "About" },
     { href: "#ecosystem", label: "Ecosystem" },
@@ -18,14 +16,14 @@ export const portalManifest = {
     { href: "#partnerships", label: "Partnerships" },
     { href: "#contact", label: "Contact" }
   ],
-  headerCta: { href: "#contact", label: "Partner with us" },
+  headerCta: { href: "#contact", label: "Start a structured conversation" },
   hero: {
     eyebrow: "Integrated business ecosystem",
-    title: "A business ecosystem designed for structure, growth and execution.",
+    title: "A business ecosystem for companies, ventures and complex initiatives.",
     description:
-      "Mula Group combines strategy, AI, digital infrastructure, commercial growth, operational capability and venture development into one coherent system for ambitious companies and projects.",
-    highlights: ["Strategy-led entry", "AI with business purpose", "Projects-ready structure"],
-    primaryCta: { href: "#contact", label: "Partner with us" },
+      "We help clients move from scattered needs to a clearer next step by connecting strategy, digital systems, commerce, technical capability and project development in one structured model.",
+    highlights: ["Strategy-first entry", "Multi-pillar execution", "Digital and operational systems"],
+    primaryCta: { href: "#contact", label: "Start a structured conversation" },
     secondaryCta: { href: "#ecosystem", label: "Explore the pillars" }
   },
   stats: [
@@ -40,8 +38,8 @@ export const portalManifest = {
       description: "Complex opportunities start with diagnosis, architecture and a clearer next move."
     },
     {
-      value: "AI-enabled",
-      label: "Business-first systems",
+      value: "Execution-aware",
+      label: "Built for real delivery",
       description: "Technology and automation are used to improve clarity, speed and scalable execution."
     }
   ],
@@ -59,9 +57,9 @@ export const portalManifest = {
           "We are not designed as an agency, software house or advisory brand in isolation. The ecosystem exists because modern growth rarely depends on one capability alone."
       },
       {
-        title: "Built around integration",
+        title: "Built around the right entry point",
         description:
-          "Strategy, digital systems, commerce, industry, projects and premium initiatives stay distinct, but they are designed to work as one connected model."
+          "We do not force every situation into the same offer. We start by finding the right pillar or combination of pillars for the actual situation."
       },
       {
         title: "Designed for execution",
@@ -84,28 +82,28 @@ export const portalManifest = {
   pillars: [],
   capabilityClusters: [
     {
-      title: "Strategic architecture",
+      title: "Strategic direction and venture structuring",
       description:
-        "Frame growth, transformation and new initiatives with better diagnosis, business architecture and clearer sequencing.",
-      tags: ["Business architecture", "Funding pathways", "Decision clarity"]
+        "Clarify growth direction, business architecture, venture logic and the next strategic move before execution becomes expensive or confused.",
+      tags: ["Strategy sessions", "Business architecture", "Funding readiness"]
     },
     {
-      title: "Digital infrastructure and AI",
+      title: "Digital systems and workflow infrastructure",
       description:
-        "Build the shared digital layer for web ecosystems, AI-assisted workflows, automation and internal operational tooling.",
-      tags: ["AI workflows", "Web ecosystems", "Automation"]
+        "Design websites, CRM-connected workflows, automation and AI-assisted support around how the business actually sells and operates.",
+      tags: ["Web systems", "CRM and automation", "AI workflows"]
     },
     {
-      title: "Commercial and operational systems",
+      title: "Revenue channels and commercial architecture",
       description:
-        "Connect revenue logic, delivery readiness and service capability so growth is grounded in real execution capacity.",
-      tags: ["Commerce", "Operational alignment", "Channel design"]
+        "Strengthen channel design, offer positioning, distribution logic and revenue structure so growth is commercially usable.",
+      tags: ["Commerce audits", "Channel architecture", "Revenue systems"]
     },
     {
-      title: "Venture and premium development",
+      title: "Technical execution, projects and premium concepts",
       description:
-        "Shape complex projects, hospitality concepts, investments and experience-led ventures with stronger structure behind them.",
-      tags: ["Projects", "Premium ventures", "Experience layer"]
+        "Support equipment-heavy operations, investment-led projects, hospitality concepts and premium ventures with stronger structure behind them.",
+      tags: ["Technical review", "Project discovery", "Premium concepts"]
     }
   ],
   capabilitiesIntro: {
@@ -161,22 +159,22 @@ export const portalManifest = {
     },
     models: [
       {
-        title: "Business solutions",
+        title: "Business systems and transformation",
         description:
-          "For companies that need strategic clarity, digital transformation, AI enablement or connected growth systems across more than one function.",
-        tags: ["Transformation", "Growth systems", "Cross-pillar execution"]
+          "For companies that need clearer structure across strategy, digital systems, commercial growth or operational change.",
+        tags: ["Strategy-first", "Digital systems", "Cross-pillar execution"]
       },
       {
-        title: "Project development",
+        title: "Project and venture development",
         description:
-          "For ventures, hospitality concepts and premium initiatives that need concept structure, execution pathways and broader ecosystem support.",
-        tags: ["Concept structuring", "Investment readiness", "Delivery pathways"]
+          "For ventures, hospitality concepts and premium initiatives that need concept framing, project logic and a path toward execution or partnership.",
+        tags: ["Concept structuring", "Investment readiness", "Execution pathways"]
       },
       {
-        title: "Partnership and investment",
+        title: "Strategic partnerships and special situations",
         description:
-          "For serious collaborators exploring joint initiatives, strategic alliances or ecosystem-linked development opportunities.",
-        tags: ["Joint initiatives", "Strategic alliances", "Expansion logic"]
+          "For partners exploring multi-pillar opportunities, joint initiatives or situations that need a more tailored ecosystem route.",
+        tags: ["Joint initiatives", "Partnership logic", "Expansion pathways"]
       }
     ],
     principles: [
@@ -187,23 +185,38 @@ export const portalManifest = {
   },
   finalCta: {
     eyebrow: "Start the conversation",
-    title: "Let's design the right structure for your next move.",
+    title: "Start with the right structured conversation.",
     description:
-      "Whether you are growing a company, planning a project, preparing an investment or modernizing execution, Mula Group helps connect the right capabilities into one coherent path.",
+      "If the situation touches more than one layer of the business, or you are unsure which pillar should lead, start here. We will help define the most sensible next step and route.",
     signals: [
-      "Business growth and transformation",
-      "Project and venture development",
-      "Operational modernization and AI enablement"
+      "A business challenge spans strategy, digital, commerce or operations",
+      "A project or venture needs structure before committing to execution",
+      "The right entry point is still unclear"
     ],
-    primaryCta: { href: "mailto:contact@mulagroup.eu", label: "Start a conversation" },
-    secondaryCta: { href: "#ecosystem", label: "Review the ecosystem" }
+    primaryCta: { href: "mailto:contact@mulagroup.eu", label: "Start a structured conversation" },
+    secondaryCta: { href: "#ecosystem", label: "See the pillar map" }
   },
   partnershipPrompt: {
-    title: "Tell us where complexity, growth or a new initiative needs clearer structure",
+    title: "Tell us what needs clearer direction, structure or execution support",
     description:
-      "Share the context of your business, challenge or opportunity. We use that as the starting point for a more structured conversation.",
-    fields: sharedInquiryFields,
-    buttonLabel: "Structured intake preview",
-    note: "Email is currently the clearest first path. Deeper routing and automation can later extend the same intake structure."
+      "Share the business, project or operational context. If the right pillar is still unclear, this is the best place to start.",
+    fields: {
+      ...sharedInquiryFields,
+      companyLabel: "Company / Project",
+      companyPlaceholder: "Company, brand or initiative",
+      inquiryTypeLabel: "What best describes the situation?",
+      inquiryTypeOptions: [
+        { label: "Unclear or multi-layered business challenge", value: "strategy" },
+        { label: "Digital systems, AI or automation", value: "digital" },
+        { label: "Sales channels, monetization or commerce", value: "commerce" },
+        { label: "Technical, machinery or operational support", value: "operational-support" },
+        { label: "Project, concept or venture development", value: "project-development" },
+        { label: "Premium concept, experience or lifestyle venture", value: "premium-concept" },
+        { label: "Partnership or special collaboration", value: "partnership" },
+        { label: "General ecosystem inquiry", value: "general-inquiry" }
+      ]
+    },
+    buttonLabel: "Send structured inquiry",
+    note: "Your inquiry will be routed into the most sensible next step while keeping one shared intake logic across the ecosystem."
   }
-} satisfies PortalManifest;
+};

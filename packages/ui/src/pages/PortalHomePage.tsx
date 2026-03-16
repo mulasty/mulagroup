@@ -1,4 +1,4 @@
-import { getPortalManifest } from "@mulagroup/utils";
+import type { PortalManifest } from "@mulagroup/content-models";
 
 import {
   PortalAboutSection,
@@ -10,18 +10,20 @@ import {
   PortalPartnershipsSection
 } from "../sections/portal";
 
-export function PortalHomePage() {
-  const portal = getPortalManifest();
+type PortalHomePageProps = {
+  site: PortalManifest;
+};
 
+export function PortalHomePage({ site }: PortalHomePageProps) {
   return (
     <>
-      <PortalHeroSection portal={portal} />
-      <PortalAboutSection portal={portal} />
-      <PortalEcosystemSection portal={portal} />
-      <PortalOperatingModelSection portal={portal} />
-      <PortalCapabilitiesSection portal={portal} />
-      <PortalPartnershipsSection portal={portal} />
-      <PortalContactSection portal={portal} />
+      <PortalHeroSection portal={site} />
+      <PortalAboutSection portal={site} />
+      <PortalEcosystemSection portal={site} />
+      <PortalOperatingModelSection portal={site} />
+      <PortalCapabilitiesSection portal={site} />
+      <PortalPartnershipsSection portal={site} />
+      <PortalContactSection portal={site} />
     </>
   );
 }

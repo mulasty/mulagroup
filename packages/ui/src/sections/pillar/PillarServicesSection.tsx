@@ -3,7 +3,7 @@ import type { SectionLead, ServiceCard } from "@mulagroup/content-models";
 import { Card, HeadingBlock, Section } from "../../components";
 
 type PillarServicesSectionProps = {
-  bestForLabel?: string;
+  bestForLabel: string;
   id?: string;
   lead: SectionLead;
   services: ServiceCard[];
@@ -11,7 +11,7 @@ type PillarServicesSectionProps = {
 };
 
 export function PillarServicesSection({
-  bestForLabel = "Best for",
+  bestForLabel,
   id,
   lead,
   services,

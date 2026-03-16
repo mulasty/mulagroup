@@ -6,15 +6,10 @@ type PillarAudienceSectionProps = {
   audiences: AudienceProfile[];
   id?: string;
   lead: SectionLead;
-  signalsLabel?: string;
+  signalsLabel: string;
 };
 
-export function PillarAudienceSection({
-  audiences,
-  id,
-  lead,
-  signalsLabel = "Typical signals",
-}: PillarAudienceSectionProps) {
+export function PillarAudienceSection({ audiences, id, lead, signalsLabel }: PillarAudienceSectionProps) {
   return (
     <Section id={id}>
       <HeadingBlock description={lead.description} eyebrow={lead.eyebrow} title={lead.title} />

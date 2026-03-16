@@ -3,10 +3,11 @@ import type { StrategyManifest } from "@mulagroup/content-models";
 import { Card, Checklist, HeadingBlock, Section } from "../../components";
 
 type StrategyIntroSectionProps = {
+  principlesLabel: string;
   site: StrategyManifest;
 };
 
-export function StrategyIntroSection({ site }: StrategyIntroSectionProps) {
+export function StrategyIntroSection({ principlesLabel, site }: StrategyIntroSectionProps) {
   return (
     <Section tone="panel">
       <div className="grid gap-10 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-start">
@@ -17,7 +18,7 @@ export function StrategyIntroSection({ site }: StrategyIntroSectionProps) {
         />
         <Card className="space-y-5" variant="subtle">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-            What the work is designed to do
+            {principlesLabel}
           </p>
           <Checklist items={site.intro.principles} />
         </Card>

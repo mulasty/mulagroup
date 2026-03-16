@@ -592,7 +592,7 @@ Core files:
 
 ## Current recommended phase
 
-**Phase 9 — CMS & Content Backend**
+**Phase 10.6 — Pillar Content Alignment & Service Truth Layer**
 
 This means the current implementation state is:
 
@@ -604,22 +604,25 @@ This means the current implementation state is:
 - Phase 6 — Industry Pillar is complete, reviewed and stabilized
 - Phase 7 — Projects Pillar is complete, reviewed and stabilized
 - Phase 8 — Lifestyle Pillar is complete, reviewed and stabilized
-- the shared system is now strong enough to move into CMS and structured content operations
+- Phase 9 — CMS & Content Backend is complete and technically stable
+- Phase 10 — Sales, CRM & Lead Operations is complete and technically stable
+- Phase 10.5 — Polish Localization & Language Layer is complete and technically stable
+- the shared system is now strong enough to move into pillar content alignment and service-truth work
 
 The immediate next technical task should be:
 
-- build the structured CMS and content backend layer
+- align portal and pillar content with real offer truth across the ecosystem
+- tighten bilingual EN/PL consistency now that localization architecture is in place
 - preserve the visual and structural consistency established across portal and all stabilized pillars
-- map the current manifest-driven content model into CMS-ready schemas and editorial structures
-- keep implementation focused on content architecture without introducing CRM, analytics or AI logic yet
+- avoid mixing truth-layer work with later analytics, AI or reporting systems too early
 
 Do **not** yet:
 
-- implement CRM logic,
-- build dashboards,
-- go deep into AI automation,
+- skip straight into analytics or dashboards,
+- go deep into AI triage,
 - redesign the pillar system after stabilization,
-- mix content-operations work with later operational systems too early.
+- mix content-truth work with later analytics or operating-intelligence layers too early,
+- rebuild the CMS or sales layer from scratch.
 
 ---
 
@@ -633,11 +636,13 @@ The current milestone is successful when:
 - the Digital, Commerce and Industry pillars clearly communicate their role and stay aligned with the shared system,
 - the Projects pillar clearly communicates its role and is fully stabilized,
 - the Lifestyle pillar clearly communicates structured premium experience and is fully stabilized,
-- the shared design language is strong enough to carry the ecosystem into CMS and content operations,
-- the repo is ready to move into Phase 9 without reworking the portal or previously stabilized pillars,
+- the shared design language is strong enough to carry the ecosystem into multilingual content and operating layers,
+- the CMS and content backend layer is in place without reworking the portal or previously stabilized pillars,
+- the sales, CRM and lead-operations layer is in place with structured forms, routing and normalized lead payloads,
+- the EN + PL localization layer is in place across routing, shared UI, SEO and forms,
 - docs and implementation point to the same next step.
 
-That is the real milestone before CMS and operating layers begin.
+That is the real milestone before pillar content-truth alignment and later operating intelligence begin.
 
 ---
 
@@ -706,15 +711,11 @@ Do not:
 
 ## Immediate next task
 
-**Move into Phase 9 — CMS & Content Backend**
+**Move into Phase 10.6 — Pillar Content Alignment & Service Truth Layer**
 
 ## After that
 
-**Then continue with sales/CRM operations only after the CMS and content layer is stable enough**
-
-## After that
-
-**Then continue with Phase 10.5, Phase 10.6, Phase 11, Phase 12, Phase 13 and Phase 14 in documented order**
+**Then continue with Phase 10.6, Phase 11, Phase 12, Phase 13 and Phase 14 in documented order**
 
 That is the strongest next sequence after a stable full pillar rollout.
 

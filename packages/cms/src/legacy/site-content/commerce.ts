@@ -1,5 +1,3 @@
-import type { CommerceManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const commerceManifest = {
@@ -438,7 +436,7 @@ export const commerceManifest = {
   inquiry: {
     title: "Tell us where the commercial model needs stronger structure",
     description:
-      "Share the product, channel or growth context that needs a better route to revenue. This intake preview reflects the first information we usually ask for before the conversation.",
+      "Share the product, channel or growth context that needs a better route to revenue. We use this intake to frame the most relevant commercial next step.",
     fields: {
       ...sharedInquiryFields,
       companyLabel: "Company",
@@ -453,7 +451,7 @@ export const commerceManifest = {
         { value: "multi-domain", label: "Multi-domain commercial challenge" },
       ],
     },
-    buttonLabel: "Initial commerce conversation context",
-    note: "Use the conversation buttons on the left to reach us directly and include the same core context shown in this intake preview.",
+    buttonLabel: "Send commerce inquiry",
+    note: "The structured inquiry keeps the commercial context clear before discovery, scoping and routing.",
   },
-} satisfies CommerceManifest;
+};

@@ -1,5 +1,3 @@
-import type { DigitalManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const digitalManifest = {
@@ -457,7 +455,7 @@ export const digitalManifest = {
   inquiry: {
     title: "Tell us what the digital layer needs to support",
     description:
-      "Share the business context, growth pressure or workflow problem that needs a stronger digital structure. This preview reflects the first information we usually need before the conversation.",
+      "Share the business context, growth pressure or workflow problem that needs a stronger digital structure. We use this intake to frame the right first digital conversation.",
     fields: {
       ...sharedInquiryFields,
       companyLabel: "Company",
@@ -472,7 +470,7 @@ export const digitalManifest = {
         { value: "multi-domain", label: "Multi-domain digital challenge" },
       ],
     },
-    buttonLabel: "Initial digital conversation context",
-    note: "Use the conversation buttons on the left to reach us directly and include the same core context shown in this intake preview.",
+    buttonLabel: "Send digital inquiry",
+    note: "The inquiry keeps digital context, routing signals and the likely next step together in one structured handoff.",
   },
-} satisfies DigitalManifest;
+};

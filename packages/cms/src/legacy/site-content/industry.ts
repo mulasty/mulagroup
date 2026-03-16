@@ -1,5 +1,3 @@
-import type { IndustryManifest } from "@mulagroup/content-models";
-
 import { sharedInquiryFields } from "./shared";
 
 export const industryManifest = {
@@ -438,7 +436,7 @@ export const industryManifest = {
   inquiry: {
     title: "Tell us where the technical or operational challenge sits today",
     description:
-      "Share the machinery, service or operational context that needs stronger structure. This intake preview reflects the first information we usually need before the conversation.",
+      "Share the machinery, service or operational context that needs stronger structure. We use this intake to understand the technical and operational reality before the first review.",
     fields: {
       ...sharedInquiryFields,
       companyLabel: "Company",
@@ -453,7 +451,7 @@ export const industryManifest = {
         { value: "multi-domain", label: "Multi-domain operational challenge" },
       ],
     },
-    buttonLabel: "Initial technical conversation context",
-    note: "Use the conversation buttons on the left to reach us directly and include the same core context shown in this intake preview.",
+    buttonLabel: "Send industry inquiry",
+    note: "The structured inquiry keeps technical context, routing and the recommended first review together from the start.",
   },
-} satisfies IndustryManifest;
+};

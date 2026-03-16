@@ -1,4 +1,5 @@
 import type { ProjectsManifest } from "@mulagroup/content-models";
+import { getSiteChrome, getSharedUiCopy } from "@mulagroup/utils";
 
 import {
   PillarAudienceSection,
@@ -18,36 +19,51 @@ type ProjectsHomePageProps = {
 };
 
 export function ProjectsHomePage({ site }: ProjectsHomePageProps) {
+  const chrome = getSiteChrome("projects", site.locale);
+  const copy = getSharedUiCopy(site.locale);
+
   return (
     <>
       <PillarHeroSection
-        panelLabel="Project development layer"
+        panelLabel={chrome.heroPanelLabel ?? ""}
         site={site}
-        supportingCopy="Projects is strongest when concept direction, investment logic and future execution routes are clarified before the initiative becomes expensive, vague or over-designed."
+        supportingCopy={chrome.heroSupportingCopy}
       />
-      <PillarIntroSection
-        principlesLabel="What a structured project architecture should do"
-        section={site.intro}
-      />
-      <PillarServicesSection id="services" lead={site.servicesIntro} services={site.services} />
+      <PillarIntroSection principlesLabel={chrome.introPrinciplesLabel} section={site.intro} />
       <PillarServicesSection
-        bestForLabel="Best fit"
+        bestForLabel={chrome.bestForLabel}
+        id="services"
+        lead={site.servicesIntro}
+        services={site.services}
+      />
+      <PillarServicesSection
+        bestForLabel={chrome.bestForLabel}
         id="project-types"
         lead={site.projectTypesIntro}
         services={site.projectTypes}
         tone="panel"
       />
-      <PillarAudienceSection audiences={site.audiences} lead={site.audiencesIntro} />
+      <PillarAudienceSection
+        audiences={site.audiences}
+        lead={site.audiencesIntro}
+        signalsLabel={copy.shared.typicalSignals}
+      />
       <PillarProcessSection id="process" lead={site.processIntro} steps={site.process} />
       <PillarFormatsSection formats={site.formats} lead={site.formatsIntro} />
       <PillarDifferentiatorsSection items={site.differentiators} lead={site.differentiatorsIntro} />
-      <PillarConnectionsSection currentLabel="Projects" leadingLabels={["Strategy"]} site={site} />
+      <PillarConnectionsSection
+        currentLabel={site.name}
+        flowLabel={chrome.connectionsFlowLabel}
+        leadingLabels={["Strategy"]}
+        routesLabel={chrome.connectionsRoutesLabel}
+        site={site}
+      />
       <PillarFaqSection faqs={site.faqs} lead={site.faqsIntro} />
       <PillarContactSection
         contactContext="projects-contact"
-        hostLabel="projects.mulagroup.eu"
+        hostLabel={new URL(site.url).host}
         site={site}
-        startSignalsLabel="Typical starting situations"
+        startSignalsLabel={chrome.contactSignalsLabel}
       />
     </>
   );

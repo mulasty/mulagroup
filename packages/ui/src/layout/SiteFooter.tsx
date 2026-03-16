@@ -1,6 +1,11 @@
 import type { SiteManifest } from "@mulagroup/content-models";
 
-import { getPillarCards } from "@mulagroup/utils";
+import {
+  getFooterContent,
+  getGlobalSiteSettings,
+  getPillarCards,
+  getSharedUiCopy,
+} from "@mulagroup/utils";
 
 import { BrandLogo } from "../components/BrandLogo";
 import { Button } from "../components/Button";
@@ -11,7 +16,15 @@ type SiteFooterProps = {
 };
 
 export function SiteFooter({ site }: SiteFooterProps) {
-  const pillarCards = getPillarCards().filter((pillar) => pillar.key !== site.key);
+  const copy = getSharedUiCopy(site.locale);
+  const pillarCards = getPillarCards(site.locale).filter((pillar) => pillar.key !== site.key);
+  const footer = getFooterContent(site.key, site.locale);
+  const settings = getGlobalSiteSettings(site.locale);
+  const quickLinks = site.navigation;
+  const quickLinksTitle = copy.footer.quickLinks;
+  const ecosystemTitle =
+    site.type === "portal" ? copy.footer.ecosystemLinks : copy.footer.relatedLinks;
+  const contactEmail = footer.contactBlock.email ?? settings.contactEmail;
 
   return (
     <footer className="border-t border-white/8 bg-slate-950/30 py-14 sm:py-16">
@@ -21,21 +34,25 @@ export function SiteFooter({ site }: SiteFooterProps) {
             <BrandLogo className="shrink-0 scale-[1.6] transform-gpu" size="lg" variant="white" />
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
-                {site.type === "portal" ? "Mula Group ecosystem" : "Mula Group pillar"}
+                {site.type === "portal"
+                  ? copy.footer.portalLabel
+                  : `${site.name} ${copy.header.pillarSuffix}`}
               </p>
-              <h2 className="text-2xl font-semibold tracking-tight text-white">
-                {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
-              </h2>
+              <h2 className="text-2xl font-semibold tracking-tight text-white">{site.name}</h2>
             </div>
           </div>
-          <p className="max-w-xl text-sm leading-7 text-slate-300">{site.summary}</p>
+          <p className="max-w-xl text-sm leading-7 text-slate-300">{footer.shortDescription}</p>
           <div className="flex flex-wrap gap-3 text-sm text-slate-400">
-            <a className="hover:text-white" href="https://mulagroup.eu">
-              mulagroup.eu
-            </a>
-            <a className="hover:text-white" href="mailto:contact@mulagroup.eu">
-              contact@mulagroup.eu
-            </a>
+            {footer.contactBlock.website ? (
+              <a className="hover:text-white" href={footer.contactBlock.website}>
+                {footer.contactBlock.website.replace(/^https?:\/\//, "")}
+              </a>
+            ) : null}
+            {contactEmail ? (
+              <a className="hover:text-white" href={`mailto:${contactEmail}`}>
+                {contactEmail}
+              </a>
+            ) : null}
           </div>
           <Button href={site.headerCta.href} variant="secondary">
             {site.headerCta.label}
@@ -44,23 +61,29 @@ export function SiteFooter({ site }: SiteFooterProps) {
 
         <div className="space-y-4">
           <h3 className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
-            Quick links
+            {quickLinksTitle}
           </h3>
-          <nav aria-label="Footer quick links" className="grid gap-3 text-sm">
-            {site.navigation.map((item) => (
+          <nav aria-label={copy.footer.footerQuickLinksAriaLabel} className="grid gap-3 text-sm">
+            {quickLinks.map((item) => (
               <a className="text-slate-300 hover:text-white" href={item.href} key={item.label}>
                 {item.label}
               </a>
             ))}
           </nav>
-          <p className="text-xs leading-6 text-slate-500">
-            Legal and privacy pages will be added as the ecosystem expands.
-          </p>
+          {footer.legalLinks.length > 0 ? (
+            <div className="flex flex-wrap gap-3 text-xs text-slate-500">
+              {footer.legalLinks.map((link) => (
+                <a className="hover:text-white" href={link.href} key={link.label}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <div className="space-y-4">
           <h3 className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
-            {site.type === "portal" ? "Ecosystem pillars" : "Related ecosystem links"}
+            {ecosystemTitle}
           </h3>
           <div className="grid gap-3 sm:grid-cols-2">
             {pillarCards.map((pillar) => (
@@ -80,8 +103,8 @@ export function SiteFooter({ site }: SiteFooterProps) {
       </Container>
 
       <Container className="mt-10 flex flex-col gap-3 border-t border-white/8 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-        <p>Strategic, digital and operational ecosystem for modern business growth.</p>
-        <p>Built to connect the right capabilities into one structured path for growth.</p>
+        <p>{footer.bottomTextPrimary}</p>
+        <p>{footer.bottomTextSecondary}</p>
       </Container>
     </footer>
   );

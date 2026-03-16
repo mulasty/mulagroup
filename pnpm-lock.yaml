@@ -56,6 +56,9 @@ importers:
 
   apps/commerce:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -77,6 +80,9 @@ importers:
 
   apps/digital:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -98,6 +104,9 @@ importers:
 
   apps/industry:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -119,6 +128,9 @@ importers:
 
   apps/lifestyle:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -140,6 +152,9 @@ importers:
 
   apps/portal:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -161,6 +176,9 @@ importers:
 
   apps/projects:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -182,6 +200,9 @@ importers:
 
   apps/strategy:
     dependencies:
+      '@mulagroup/crm':
+        specifier: workspace:*
+        version: link:../../packages/crm
       '@mulagroup/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
@@ -201,9 +222,24 @@ importers:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
 
+  packages/cms:
+    dependencies:
+      '@mulagroup/content-models':
+        specifier: workspace:*
+        version: link:../content-models
+
   packages/config: {}
 
   packages/content-models: {}
+
+  packages/crm:
+    dependencies:
+      '@mulagroup/cms':
+        specifier: workspace:*
+        version: link:../cms
+      '@mulagroup/content-models':
+        specifier: workspace:*
+        version: link:../content-models
 
   packages/design-system: {}
 
@@ -221,6 +257,9 @@ importers:
 
   packages/utils:
     dependencies:
+      '@mulagroup/cms':
+        specifier: workspace:*
+        version: link:../cms
       '@mulagroup/content-models':
         specifier: workspace:*
         version: link:../content-models
