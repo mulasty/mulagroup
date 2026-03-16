@@ -4,6 +4,7 @@ import type { SiteManifest } from "@mulagroup/content-models";
 import { cn } from "@mulagroup/utils";
 import { useEffect, useId, useRef, useState } from "react";
 
+import { BrandLogo } from "../components/BrandLogo";
 import { Button } from "../components/Button";
 import { Container } from "../components/Container";
 
@@ -76,12 +77,15 @@ export function SiteHeader({ site }: SiteHeaderProps) {
       )}
     >
       <Container className="flex min-h-20 items-center justify-between gap-6">
-        <a className="min-w-0" href="/">
-          <span className="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
-            {site.type === "portal" ? "Integrated business ecosystem" : `${site.name} pillar`}
-          </span>
-          <span className="block truncate text-lg font-semibold tracking-tight text-white">
-            {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
+        <a className="flex min-w-0 items-center gap-3" href="/">
+          <BrandLogo className="shrink-0" size="sm" variant="white" />
+          <span className="min-w-0">
+            <span className="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
+              {site.type === "portal" ? "Integrated business ecosystem" : `${site.name} pillar`}
+            </span>
+            <span className="block truncate text-lg font-semibold tracking-tight text-white">
+              {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
+            </span>
           </span>
         </a>
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
@@ -132,11 +136,16 @@ export function SiteHeader({ site }: SiteHeaderProps) {
             role="dialog"
           >
             <div className="mb-4 flex items-center justify-between gap-4 border-b border-white/8 pb-4">
-              <div className="space-y-1">
-                <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-slate-500">
-                  Navigation
-                </span>
-                <p className="text-sm font-medium text-white">{site.name}</p>
+              <div className="flex min-w-0 items-center gap-3">
+                <BrandLogo className="shrink-0" size="sm" variant="white" />
+                <div className="space-y-1">
+                  <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-slate-500">
+                    Navigation
+                  </span>
+                  <p className="truncate text-sm font-medium text-white">
+                    {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
+                  </p>
+                </div>
               </div>
               <button
                 className="rounded-input border border-white/10 px-3 py-2 text-sm font-medium text-slate-200 hover:bg-white/6 hover:text-white"

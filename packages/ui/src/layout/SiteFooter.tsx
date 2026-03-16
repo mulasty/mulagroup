@@ -2,6 +2,7 @@ import type { SiteManifest } from "@mulagroup/content-models";
 
 import { getPillarCards } from "@mulagroup/utils";
 
+import { BrandLogo } from "../components/BrandLogo";
 import { Button } from "../components/Button";
 import { Container } from "../components/Container";
 
@@ -16,11 +17,16 @@ export function SiteFooter({ site }: SiteFooterProps) {
     <footer className="border-t border-white/8 bg-slate-950/30 py-14 sm:py-16">
       <Container className="grid gap-12 xl:grid-cols-[minmax(0,0.82fr)_180px_minmax(0,0.98fr)] xl:items-start">
         <div className="space-y-5">
-          <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
-              {site.type === "portal" ? "Mula Group ecosystem" : "Mula Group pillar"}
-            </p>
-            <h2 className="text-2xl font-semibold tracking-tight text-white">{site.name}</h2>
+          <div className="flex items-start gap-4">
+            <BrandLogo className="shrink-0" size="lg" variant="white" />
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
+                {site.type === "portal" ? "Mula Group ecosystem" : "Mula Group pillar"}
+              </p>
+              <h2 className="text-2xl font-semibold tracking-tight text-white">
+                {site.type === "portal" ? site.name : `${site.name} by Mula Group`}
+              </h2>
+            </div>
           </div>
           <p className="max-w-xl text-sm leading-7 text-slate-300">{site.summary}</p>
           <div className="flex flex-wrap gap-3 text-sm text-slate-400">
@@ -37,7 +43,9 @@ export function SiteFooter({ site }: SiteFooterProps) {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Quick links</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
+            Quick links
+          </h3>
           <nav aria-label="Footer quick links" className="grid gap-3 text-sm">
             {site.navigation.map((item) => (
               <a className="text-slate-300 hover:text-white" href={item.href} key={item.label}>
