@@ -6,6 +6,7 @@ import {
   PortalContactSection,
   PortalEcosystemSection,
   PortalHeroSection,
+  PortalIntegrationArchitectureSection,
   PortalOperatingModelSection,
   PortalPartnershipsSection
 } from "../sections/portal";
@@ -21,6 +22,7 @@ export function PortalHomePage({ site }: PortalHomePageProps) {
       <PortalAboutSection portal={site} />
       <PortalEcosystemSection portal={site} />
       <PortalOperatingModelSection portal={site} />
+      <PortalIntegrationArchitectureSection portal={site} />
       <PortalCapabilitiesSection portal={site} />
       <PortalPartnershipsSection portal={site} />
       <PortalContactSection portal={site} />

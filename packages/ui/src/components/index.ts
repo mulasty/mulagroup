@@ -6,6 +6,7 @@ export * from "./Checklist";
 export * from "./Container";
 export * from "./FaqAccordion";
 export * from "./HeadingBlock";
+export * from "./integration-architecture";
 export * from "./InquiryFormPanel";
 export * from "./InquiryPreviewPanel";
 export * from "./Input";
