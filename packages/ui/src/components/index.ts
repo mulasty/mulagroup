@@ -4,6 +4,7 @@ export * from "./Button";
 export * from "./Card";
 export * from "./Checklist";
 export * from "./Container";
+export * from "./agentic-ai-operating-system";
 export * from "./agent-architecture-showcase";
 export * from "./automation-process-workflow";
 export * from "./data-flow-architecture";

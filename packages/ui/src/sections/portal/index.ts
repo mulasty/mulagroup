@@ -1,5 +1,6 @@
 export * from "./PortalAboutSection";
 export * from "./PortalAgentArchitectureShowcaseSection";
+export * from "./PortalAgenticAiOperatingSystemSection";
 export * from "./PortalAutomationProcessWorkflowSection";
 export * from "./PortalCapabilitiesSection";
 export * from "./PortalContactSection";

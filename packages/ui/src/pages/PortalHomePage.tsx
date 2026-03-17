@@ -3,6 +3,7 @@ import type { PortalManifest } from "@mulagroup/content-models";
 import {
   PortalAboutSection,
   PortalAgentArchitectureShowcaseSection,
+  PortalAgenticAiOperatingSystemSection,
   PortalAutomationProcessWorkflowSection,
   PortalCapabilitiesSection,
   PortalContactSection,
@@ -32,6 +33,7 @@ export function PortalHomePage({ site }: PortalHomePageProps) {
       <PortalDataFlowOrchestrationSection portal={site} />
       <PortalAutomationProcessWorkflowSection portal={site} />
       <PortalAgentArchitectureShowcaseSection portal={site} />
+      <PortalAgenticAiOperatingSystemSection portal={site} />
       <PortalPartnershipsSection portal={site} />
       <PortalContactSection portal={site} />
     </>
