@@ -7,6 +7,7 @@ export * from "./Container";
 export * from "./agentic-ai-operating-system";
 export * from "./agent-architecture-showcase";
 export * from "./automation-process-workflow";
+export * from "./automation-process-matrix";
 export * from "./data-flow-architecture";
 export * from "./data-flow-orchestration";
 export * from "./FaqAccordion";

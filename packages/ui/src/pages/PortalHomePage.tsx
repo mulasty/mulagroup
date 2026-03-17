@@ -4,6 +4,7 @@ import {
   PortalAboutSection,
   PortalAgentArchitectureShowcaseSection,
   PortalAgenticAiOperatingSystemSection,
+  PortalAutomationProcessMatrixSection,
   PortalAutomationProcessWorkflowSection,
   PortalCapabilitiesSection,
   PortalContactSection,
@@ -34,6 +35,7 @@ export function PortalHomePage({ site }: PortalHomePageProps) {
       <PortalAutomationProcessWorkflowSection portal={site} />
       <PortalAgentArchitectureShowcaseSection portal={site} />
       <PortalAgenticAiOperatingSystemSection portal={site} />
+      <PortalAutomationProcessMatrixSection portal={site} />
       <PortalPartnershipsSection portal={site} />
       <PortalContactSection portal={site} />
     </>
